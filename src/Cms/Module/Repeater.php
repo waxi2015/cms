@@ -2,7 +2,7 @@
 
 namespace Waxis\Cms\Cms\Module;
 
-class Lister extends Ancestor {
+class Repeater extends Ancestor {
 
 	public $type = 'list';
 
@@ -10,6 +10,6 @@ class Lister extends Ancestor {
 		$descriptor = $descriptor !== null ? $descriptor : $this->descriptor;
 		$page = isset($this->params['page']) ? $this->params['page'] : null;
 
-		$this->module = new \Lister($descriptor, $page);
+		$this->module = new \Repeater($descriptor, $page);
 	}
 }

@@ -1,10 +1,10 @@
 <html>
 	<head>
-		<link href="/css/app.css" rel="stylesheet" type="text/css">
-		<link href="/css/all.css" rel="stylesheet" type="text/css">
-		<script type="text/javascript" src="/js/all.js"></script>
-		<script type="text/javascript" src="/libs/ckeditor/ckeditor.js"></script>
-		<script type="text/javascript" src="/libs/ckeditor/adapters/jquery.js"></script>
+
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+
+        <link href="/css/form.css" rel="stylesheet" type="text/css">
+        <link href="/css/theme.css" rel="stylesheet" type="text/css">
 
 		<script>
 			$(function() {
@@ -34,5 +34,11 @@
 			</div>
 		</div>
 		<div id="wx-feedback"></div>
+
+        <script type="text/javascript" src="/js/form.js"></script>
+        <script type="text/javascript" src="/js/repeater.js"></script>
+        
+        <script type="text/javascript" src="/libs/ckeditor/ckeditor.js"></script>
+        <script type="text/javascript" src="/libs/ckeditor/adapters/jquery.js"></script>
 	</body>
 </html>

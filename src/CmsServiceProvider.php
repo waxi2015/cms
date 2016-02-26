@@ -19,6 +19,8 @@ class CmsServiceProvider extends ServiceProvider
         }
 
         $this->publishes([
+            __DIR__.'/Descriptors/Admin.php' => app_path('Descriptors/Cms/Admin.php'),
+            __DIR__.'/config/cms.php' => config_path('cms.php'),
             __DIR__.'/Controllers/AdminController.php' => app_path('Http/Controllers/AdminController.php'),
             __DIR__.'/Cms/Template/view/' => resource_path('views/admin'),
         ]);

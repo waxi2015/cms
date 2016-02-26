@@ -426,7 +426,7 @@ class Cms extends Cms\Ancestor {
 			case 'list':
 				$page = isset($this->request->page) ? $this->request->page : null;
 
-				$module = new Cms\Module\Lister($this->list['descriptor'], array('page' => $page), $this->moduleDescriptorExtensions);
+				$module = new Cms\Module\Repeater($this->list['descriptor'], array('page' => $page), $this->moduleDescriptorExtensions);
 				break;
 
 			case 'form':
