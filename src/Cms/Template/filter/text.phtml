@@ -1,0 +1,20 @@
+<input type="text"<?=$this->getAttributesString()?> />
+
+<script>
+	$(function(){
+		$('#<?=$this->getId()?>').keyup(function(e){
+			if (e.which == 13 || e.keyCode == 13) {
+				e.preventDefault();
+				var values = $('#<?=$this->getListId()?>-filters').serializeObject();
+			
+				$('#<?=$this->getListId()?>').wxlist('refresh', {
+					filters : values
+				});
+			}
+		}).keydown(function(e){
+			if (e.which == 13 || e.keyCode == 13) {
+				e.preventDefault();
+			}
+		})
+	})
+</script>

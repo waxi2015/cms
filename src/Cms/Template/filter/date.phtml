@@ -1,0 +1,14 @@
+<input type="date"<?=$this->getAttributesString(1)?> />
+<input type="date"<?=$this->getAttributesString(0)?> />
+
+<script>
+	$(function(){
+		$('#<?=$this->getId()?>-0,#<?=$this->getId()?>-1').change(function(e){
+			var values = $('#<?=$this->getListId()?>-filters').serializeObject();
+			
+			$('#<?=$this->getListId()?>').wxlist('refresh', {
+				filters : values
+			});
+		})
+	})
+</script>

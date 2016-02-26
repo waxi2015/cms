@@ -1,0 +1,14 @@
+<a href="<?=$this->createUrl('export')?>" class="btn gray" id="wx-export-list">Export</a>
+
+<script>
+	$(function(){
+		$('#wx-export-list').click(function(e){
+			e.preventDefault();
+
+			var filters = $('#slides-filters').serialize();
+			var params = $.param($('#slides').wxlist('getParams'));
+
+			location.href = $(this).attr('href') + '?' + filters + '&' + params;
+		})
+	})
+</script>

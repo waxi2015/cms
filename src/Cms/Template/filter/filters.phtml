@@ -1,0 +1,5 @@
+<form id="<?=$this->getListId()?>-filters">
+	<? foreach ($this->getFilters() as $filter) : ?>
+		&nbsp;<?=$filter->fetch()?>
+	<? endforeach; ?>
+</form>
