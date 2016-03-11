@@ -14,5 +14,5 @@ Route::group(['middleware' => 'web'], function(){
 	Route::any('/admin/{tab}/{page}', 'App\Http\Controllers\\' . config('cms.controller') . '@main');
 
 	# Tab routes
-	Route::any('/admin/admins/password', 'App\Http\Controllers\\' . config('cms.controller') . '@password');
+	Route::any('/admin/admins/password/{id}', 'App\Http\Controllers\\' . config('cms.controller') . '@password');
 });
