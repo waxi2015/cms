@@ -11,8 +11,8 @@ class Config {
 		'addNew' => 'Add new',
 		'save' => 'Save',
 		'cancel' => 'Cancel',
-		'delete' => 'Delete',
-		'edit' => 'Edit',
+		'delete' => '<i class="fa fa-trash"></i>',
+		'edit' => '<i class="fa fa-pencil"></i>',
 		'order' => 'Sorrend',
 	];
 

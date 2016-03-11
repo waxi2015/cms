@@ -1,0 +1,21 @@
+@import "bootstrap.scss";
+@import "components/side-bar";
+@import "components/toastr";
+@import "components/header";
+@import "components/table";
+@import "components/paginator";
+@import "components/form";
+@import "components/login";
+
+body {
+	color: $text-color;
+	background: #2F4050;
+}
+
+a {
+	color: #3dbbd2;
+}
+
+.container-fluid {
+    padding: 0px;
+}

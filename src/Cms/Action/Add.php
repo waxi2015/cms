@@ -10,13 +10,11 @@ class Add extends \Waxis\Cms\Cms\Action {
 		}
 
 		if ($this->form !== null) {
-			$this->addCancelButtonToForm();
 			$this->addSaveButtonToForm();
+			$this->addCancelButtonToForm();
 			$this->addAddNewButtonToEditForm();
 			$this->addSaveToForm();
 			$this->addIdFieldToForm();
-			$this->addHandleImageBeforeSaveToForm();
-			$this->addHandleMultiimageBeforeSaveToForm();
 			$this->addSuccessFeedbackToForm();
 		}
 	}

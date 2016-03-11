@@ -1,44 +1,23 @@
+<!DOCTYPE html>
 <html>
 	<head>
-
-        <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
-
-        <link href="/css/form.css" rel="stylesheet" type="text/css">
-        <link href="/css/theme.css" rel="stylesheet" type="text/css">
-
-		<script>
-			$(function() {
-				$('.tabs > ul > li > a').click(function(e){
-					if ($(this).parent().find('ul').length == 0)
-						return;
-
-					e.preventDefault();
-
-					var hasClass = $(this).parent().hasClass('active');
-
-					$('.tabs > ul > li').removeClass('active');
-
-					if (!hasClass) {
-						$(this).parent().addClass('active');
-					}
-				})
-			});
-		</script>
+	   @include('admin.partials.head')
 	</head>
 	<body>
-		<div id="container">
-			@include('admin.left')
-
-			<div id="content">
-				@yield('content')
-			</div>
-		</div>
-		<div id="wx-feedback"></div>
-
-        <script type="text/javascript" src="/js/form.js"></script>
-        <script type="text/javascript" src="/js/repeater.js"></script>
-        
-        <script type="text/javascript" src="/libs/ckeditor/ckeditor.js"></script>
-        <script type="text/javascript" src="/libs/ckeditor/adapters/jquery.js"></script>
+		<div id="st-container" class="st-container container-fluid">
+            <div class="st-pusher">
+                <nav class="st-menu st-effect-1" id="st-menu-1">
+        			@include('admin.partials.sidebar')
+				</nav>
+				<div class="st-content">
+				    <div class="st-content-inner">
+						@yield('content')
+					</div>
+				</div>
+            </div>
+        </div>
+	    
+	    <!-- App -->
+        <script type="text/javascript" src="/js/admin/cms.js"></script>
 	</body>
 </html>

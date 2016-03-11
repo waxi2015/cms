@@ -1,0 +1,14 @@
+.toast {
+	&.toast-success {
+		background-color: #3BBBC7;
+		box-shadow: 0 0 6px #999999;
+
+		&:hover {
+			box-shadow: 0 0 6px #444444;		
+		}
+	}
+
+	.toast-message {
+		font-size: 13px;
+	}
+}

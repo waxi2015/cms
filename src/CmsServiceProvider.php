@@ -19,10 +19,14 @@ class CmsServiceProvider extends ServiceProvider
         }
 
         $this->publishes([
-            __DIR__.'/Descriptors/Admin.php' => app_path('Descriptors/Cms/Admin.php'),
+            __DIR__.'/assets' => resource_path('assets/admin'),
+            __DIR__.'/Descriptors' => app_path('Descriptors'),
+            __DIR__.'/config/auth.php' => config_path('auth.php'),
             __DIR__.'/config/cms.php' => config_path('cms.php'),
             __DIR__.'/Controllers/AdminController.php' => app_path('Http/Controllers/AdminController.php'),
             __DIR__.'/Cms/Template/view/' => resource_path('views/admin'),
+            __DIR__.'/Middleware/Authenticate.php' => app_path('Http/Middleware/Authenticate.php'),
+            __DIR__.'/migrations' => 'database/migrations',
         ]);
     }
 

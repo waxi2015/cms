@@ -18,8 +18,6 @@ class Action extends Ancestor {
 
 	public $listDescriptor = null;
 
-	public $contentDescriptor = null;
-
 	public $idField = null;
 
 	public $idElement = null;
@@ -46,10 +44,6 @@ class Action extends Ancestor {
 			$this->listDescriptor = $this->list->module->getDescriptor();
 		}
 
-		if (isset($this->cms->descriptor['content'])) {
-			$this->contentDescriptor = $this->cms->descriptor['content'];
-		}
-
 	}
 
 	public function execute () {
@@ -57,10 +51,12 @@ class Action extends Ancestor {
 		if ($this->table !== null) {
 			if ($this->list !== null) {
 				$this->addTableToList();
+				$this->addPermissionToList();
 			}
 
 			if ($this->form !== null) {
 				$this->addTableToForm();
+				$this->addPermissionToForm();
 			}
 		}
 
@@ -73,6 +69,18 @@ class Action extends Ancestor {
 				$executive->execute();
 			}
 		}
+	}
+
+	public function addPermissionToList () {
+		$this->cms->moduleDescriptorExtensions['list'][] = [
+			'permission' => 'admin'
+		];
+	}
+
+	public function addPermissionToForm () {
+		$this->cms->moduleDescriptorExtensions['form'][] = [
+			'permission' => 'admin'
+		];
 	}
 
 	public function addTableToList () {
@@ -91,30 +99,9 @@ class Action extends Ancestor {
 		$this->cms->descriptorExtensions['list'][] = [
 			'buttons' => [
 				[
+					'class' => 'btn-primary',
 					'label' => $this->config->getTranslation('add'),
 					'url' 	=> $this->config->getUrl('add'),
-				]
-			]
-		];
-	}
-
-	public function addCancelButtonToContent () {
-		$this->cms->descriptorExtensions['content'][] = [
-			'buttons' => [
-				[
-					'label' => $this->config->getTranslation('cancel'),
-					'url' 	=> $this->config->getUrl('main'),
-				]
-			]
-		];
-	}
-
-	public function addSaveButtonToContent () {
-		$this->cms->descriptorExtensions['content'][] = [
-			'buttons' => [
-				[
-					'label' => $this->config->getTranslation('save'),
-					'id' 	=> 'save-content',
 				]
 			]
 		];
@@ -124,6 +111,7 @@ class Action extends Ancestor {
 		$this->cms->descriptorExtensions['form'][] = [
 			'buttons' => [
 				[
+					'class' => 'btn-plain',
 					'label' => $this->config->getTranslation('cancel'),
 					'url' 	=> $this->config->getUrl('main'),
 				]
@@ -135,6 +123,7 @@ class Action extends Ancestor {
 		$this->cms->descriptorExtensions['form'][] = [
 			'buttons' => [
 				[
+					'class' => 'btn-primary',
 					'label' => $this->config->getTranslation('save'),
 					'id' 	=> 'save-form',
 				]
@@ -143,7 +132,7 @@ class Action extends Ancestor {
 	}
 
 	public function addAddNewButtonToEditForm () {
-		$this->cms->descriptorExtensions['form'][] = [
+		/*$this->cms->descriptorExtensions['form'][] = [
 			'buttons' => [
 				'edit' => [
 					[
@@ -152,7 +141,7 @@ class Action extends Ancestor {
 					]
 				]
 			]
-		];
+		];*/
 	}
 
 	public function addSaveToForm () {
@@ -172,12 +161,14 @@ class Action extends Ancestor {
 		}
 
 		$addon = [
+			'class' => 'hidden',
 			'type' => 'hidden',
 			'name' => $this->idField,
 		];
 
 		if ($formStructureType != 'elements') {
 			$addon = [
+				'class' => 'hidden',
 				'elements' => [$addon]
 			];
 		}
@@ -195,6 +186,7 @@ class Action extends Ancestor {
 				[
 					'label' => $this->config->getTranslation('edit'),
 					'url' => $this->cms->createUrl('edit', $this->cms->tab),
+					'type' => 'edit',
 				]
 			]
 		];
@@ -281,59 +273,10 @@ class Action extends Ancestor {
 		}
 	}
 
-	public function addHandleImageBeforeSaveToForm () {
-		# @todo: remove
-		$hasImages = false;
-		foreach ($this->form->module->getElements() as $element) {
-			if ($element->getType() == 'image') {
-				$hasImages = true;
-				break;
-			}
-		}
-
-		if (!$hasImages) {
-			return;
-		}
-
-		$this->cms->moduleDescriptorExtensions['form'][] = [
-			'before' => [
-				[
-					'class' => '\Waxis\Cms\Cms\Helper\Image',
-					'method' => 'handleImage',
-				]
-			]
-		];
-	}
-
-	public function addHandleMultiimageBeforeSaveToForm () {
-		# @todo: remove
-		$hasMultiimages = false;
-		foreach ($this->form->module->getElements() as $element) {
-			if ($element->getType() == 'multiimage') {
-				$hasMultiimages = true;
-				break;
-			}
-		}
-
-		if (!$hasMultiimages) {
-			return;
-		}
-
-		$this->cms->moduleDescriptorExtensions['form'][] = [
-			'before' => [
-				[
-					'class' => '\Waxis\Cms\Cms\Helper\Image',
-					'method' => 'handleMultiimage',
-					'updateData' => true,
-				]
-			]
-		];
-	}
-
 	public function addSuccessFeedbackToForm () {
 		$this->cms->moduleDescriptorExtensions['form'][] = [
-			'data' => [
-				'after' => 'sendSuccess'
+			'feedback' => [
+				'true'=>['message'=>'Mentés sikeres','valid'=>true]
 			]
 		];
 	}

@@ -1,0 +1,199 @@
+//== Sidebar customization
+//
+//##
+
+#st-container.st-menu-open {
+	.st-pusher::after {
+		z-index: 50;
+	}
+}
+
+.st-container {
+	overflow: auto;
+}
+
+.st-pusher {
+	perspective: none;
+	height: initial;
+	min-height: 100%;
+	background: #F3F3F4;
+
+	.st-menu {
+		background: #2F4050;
+		position: absolute;
+		float: left;
+		width: 220px;
+		transform: translate3d(0, 0, 0);
+
+		.icon {
+			cursor: pointer;
+		}
+
+		h2 {
+			padding: 50px 0;
+			text-align: center;
+		}
+	}
+
+	.st-content {
+		transition: .5s;
+		margin-left: 220px;
+		background: transparent;
+		display: table;
+		width: calc(100% - 220px);
+	}
+
+	&::after {
+		display: none;
+	}
+}
+
+.metismenu {
+	padding: 0;
+    margin: 0;
+    list-style: none;
+    font-size: 13px;
+
+	& > li {
+		transition: .4s;
+		position: relative;
+    	display: block;	
+
+		& > a {
+			position: relative;
+    		display: block;
+    		font-weight: 600;
+    		padding: 14px 20px 14px 25px;
+    		color: #a7b1c2;
+
+    		i {
+    			margin-right: 6px;
+    		}
+
+    		&:focus, &:hover {
+    			text-decoration: none;
+    		}
+		}
+
+		& > ul {
+			list-style: none;
+			padding: 0;
+
+			& > li {
+				position: relative;
+			    display: inline-block;
+				width: 100%;
+
+				& > a {
+					padding: 7px 10px 7px 10px;
+					padding-left: 52px;
+					font-weight: 600;
+	    			color: #a7b1c2;
+	    			position: relative;
+    				display: block;
+
+    				&:focus, &:hover {
+		    			text-decoration: none;
+		    		}
+				}
+    			
+				&.active {
+					& > a {
+						color: #ffffff;
+					}
+				}
+
+				&:last-child {
+					margin-bottom: 10px;
+				}
+			}
+		}
+
+		&.active {
+			border-left: 4px solid #3dbbd2;
+			background: #293846;
+
+			& > a {
+				color: #ffffff;
+			}
+		}
+	}
+}
+
+.menu-header {
+	background: #1B2836;
+    padding: 30px 20px;
+
+    .image {
+    	background: #2F4050;
+	    text-align: center;
+	    width: 48px;
+	    height: 48px;
+	    font-size: 32px;
+	    line-height: 48px;
+	    border-radius: 24px;
+	    color: #1B2836;
+	    float: left;
+	    margin-right: 13px;
+
+	    img {
+	    	border-radius: 24px;
+	    }
+    }
+
+    .name {
+    	font-size: 13px;
+	    color: #DFE4ED;
+	    margin-top: 7px;
+	    display: block;
+    }
+
+    a {
+    	font-size: 13px;
+	    color: #A4AFBF;
+	    margin-top: 2px;
+	    display: inline-block;
+
+	    i {
+    	    font-size: 12px;
+			margin-right: 2px;
+	    }
+    }
+}
+
+.menu-footer {
+	display: inline-block;
+    width: 60px;
+    height: 67px;
+    background: url(/images/logo-watermark.png) no-repeat left top;
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    background-size: contain;
+    margin-left: -30px;
+}
+
+@media screen and (max-width: $grid-float-breakpoint) {
+	.st-container {
+		overflow: hidden;
+	}
+
+	.st-pusher {
+		height: 100%;
+
+		.st-menu {
+			position: fixed;
+			transform: translate3d(-100%, 0, 0);
+			overflow-y: scroll;
+		}
+
+		.st-content {
+			margin-left: 0;
+			width: 100%;
+		}
+
+		&::after {
+			display: block;
+		}
+	}
+}

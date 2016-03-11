@@ -1,0 +1,20 @@
+@import "../../../libs/form/sass/form.scss";
+
+$input-border-color: #e5e6e7 !default;
+
+.wax-form {
+	float: left;
+    width: 100%;
+	padding: 0 10px;
+
+	.wax-section {
+		padding: 20px 20px 0;
+	}
+
+	.wax-brow {
+		background: #fff;
+		padding: 30px 20px 20px;
+		border-top: 3px solid #e7eaec;
+		margin-bottom: 20px;
+	}
+}

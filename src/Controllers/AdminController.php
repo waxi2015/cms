@@ -11,10 +11,10 @@ class AdminController extends \Waxis\Cms\CmsController
 {
 	public $descriptor = 'admin';
 
-	public function custom()
-	{
-		// do anything here
+	public function password (Request $request) {
+		$this->data['tab'] = 'admins';
+		$this->data['form'] = new \Form('adminpassword', $request->id);
 
-		echo 'This is a custom tab';
+		return view('admin.password', $this->data);
 	}
 }

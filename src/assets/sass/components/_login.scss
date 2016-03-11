@@ -1,0 +1,199 @@
+.login-page {
+	background: url('/images/admin/world-map.png') no-repeat center center #31a9bf;
+
+	.wax-form {
+		float: none;
+	    display: flex;
+	    align-items: center;
+	    justify-content: center;
+	    width: 100%;
+	    height: 100%;
+	    text-align: center;
+	}
+
+	.logo {
+		display: inline-block;
+		background: url('/images/admin/logo.png') no-repeat center center;
+		background-size: contain;
+	    width: 92px;
+	    height: 102px;
+		margin-bottom: 20px;
+	}
+
+	.wax-section {
+		padding: 0;
+	}
+
+	.wax-brow {
+		background: transparent;
+		border: 0;
+	    padding: 0;
+		margin: 0;
+	}
+
+	.svg-login-user {
+	    width: 18px;
+	    height: 20px;
+	    fill: rgba(0,0,0,0.43);
+	    transition: .3s;
+	}
+
+	.svg-login-password {
+		width: 19px;
+	    height: 20px;
+	    fill: rgba(0,0,0,0.43);
+	    transition: .3s;
+	}
+
+	.wax-element {
+		&.wax-html {
+			padding: 0;
+		}
+
+		&.wax-text {
+			width: 100%;
+	    	position: relative;
+	    	text-align: center;
+	    	font-size: 0;
+	    	margin-bottom: 8px;
+
+	    	.input-group {
+	    		width: 255px;
+			    float: none;
+			    display: inline-block;
+	    	}
+
+	    	.input-group-addon {
+				position: absolute;
+			    z-index: 4;
+			    border: 0;
+		        top: 7px;
+				left: 4px;
+	    	}
+
+	    	.form-control {
+	    		padding-left: 46px;
+			    height: 47px;
+			    font-weight: 300;
+			    line-height: 47px;
+			    border-radius: 2px;
+	    	}
+
+	    	.form-control-feedback, .help-block {
+	    		display: none !important;
+	    	}
+
+	    	.form-control:focus + .input-group-addon {
+	    		svg {
+	    			fill: $brand-primary;
+	    		}
+	    	}
+
+	    	&.has-error {
+	    		.input-group-addon {
+	    			svg {
+	    				fill: $brand-danger !important;
+	    			}
+	    		}
+	    	}
+		}
+
+		&.wax-swap {
+			width: 255px;
+		    float: none;
+		    display: inline-block;
+		    margin-bottom: 8px;
+
+		    label {
+		    	padding: 0;
+			    width: 50%;
+			    text-align: left;
+			    color: #fff;
+			    font-weight: 300;
+			    line-height: 34px;
+			    margin-bottom: 0;
+		    }
+
+		    .swap {
+		    	float: right;
+			    width: 50%;
+			    margin: 0;
+			    text-align: right;
+
+			    .bootstrap-switch {
+			    	margin-bottom: 0;
+			    	border: 0;
+
+			    	&:before {
+			    		content: " ";
+					    width: 39px;
+					    display: inline-block;
+					    height: 20px;
+					    position: absolute;
+					    right: 6px;
+					    top: 5px;
+					    border-radius: 10px;
+					    background: #fff;
+					    transition: background .35s .10s;
+			    	}
+
+			    	.bootstrap-switch-container {
+					    padding: 2px 0 0 0px;
+
+				    	.bootstrap-switch-label {
+						    border-radius: 12px;
+						    height: 24px;
+						    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.46);
+						    position: relative;
+						    left: 0px;
+						    top: 1px;
+						    width: 24px !important;
+				    	}
+
+				    	.bootstrap-switch-handle-off, .bootstrap-switch-handle-on {
+						    opacity: 0;
+				    	}
+			    	}
+
+			    	&.bootstrap-switch-on {
+		    			&:before {
+		    				background: #3198AB;
+		    			}
+			    	}
+
+			    }
+		    }
+		}
+
+		&.wax-submit {
+		    margin-top: -4px;
+		    margin-bottom: 12px;
+
+		   	.btn {
+				width: 255px;
+			    line-height: 33px;
+			    background: #3198AB;
+			    color: #fff;
+			    font-weight: 300;
+			    transition: .3s;
+
+			    &:hover {
+			    	background: #2A8798;
+			    }
+		   	}
+		}
+
+		&.wax-anchor {
+			width: 100%;
+		    text-align: center;
+		    padding: 0;
+
+		    .forgotten-password {
+		    	color: rgba(255,255,255,0.48);
+			    font-size: 13px;
+			    text-transform: uppercase;
+			    letter-spacing: 0.3px;
+		    }
+		}
+	}
+}

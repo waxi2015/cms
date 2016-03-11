@@ -1,0 +1,47 @@
+.wax-paginator-pages {
+	background: #fff;
+    border-top: 1px solid #DDDDDD;
+    margin-top: -1px;
+    font-size: 0;
+    padding: 15px 24px;
+
+	a {
+		font-size: 14px;
+	    color: #858C90;
+	    padding: 6px 14px;
+	    display: inline-block;
+	    border: 1px solid #DDD;
+	    border-right: 0;
+	    text-align: center;
+
+	    &.active, &:hover {
+	    	background: #f4f4f4;
+	    	text-decoration: none;
+	    }
+
+	    &:focus, &:active {
+	    	text-decoration: none;	
+	    }
+
+	    &:first-of-type {
+	    	border-radius: 3px 0 0 3px;
+    		border-right: 0;
+	    }
+
+	    &:last-of-type {
+	    	border-radius: 0 3px 3px 0;
+	    	border-right: 1px solid #DDD;
+	    }
+
+		b {
+
+		}
+	}
+
+	.page-info {
+		float: right;
+	    font-size: 13px;
+	    margin: 7px 0 0 0;
+	    font-weight: 300;
+	}
+}

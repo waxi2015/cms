@@ -20,6 +20,8 @@ class CmsController extends Controller
 	public $viewsPath = null;
 
 	public function __construct(Request $request, Route $route) {
+		$this->middleware('auth:admin', ['except' => ['login', 'index']]);
+
 		$action = explode('@',$route->getActionName())[1];
 		$tab = $request->tab;
 
@@ -33,26 +35,36 @@ class CmsController extends Controller
     	];
 
 		$this->viewsPath = config('cms.views');
-
-		/*$adminClass = APP_NAME . '_Admin';
-		if (!$adminClass::getInstance()->isLoggedIn() && !in_array($action, array('login', 'logout'))) {
-			$this->_redirect('/admin/login');
-		}*/
 	}
 
 	public function index()
 	{
-		$firstTab = key($this->cms->cmsDescriptor);
+		$firstTab = $this->cms->getFirstTab();
 
-		return redirect(config('cms.url') . '/' . $firstTab);
 
-		/*$adminClass = APP_NAME . '_Admin';
-
-		if ($adminClass::getInstance()->isLoggedIn()) {
-			$this->_redirect('/admin/' . $firstTab);
+		if (\Auth::guard('admin')->check()) {
+			return redirect(config('cms.url') . '/' . $firstTab);
 		} else {
-			$this->_redirect('/admin/login');
-		}*/
+			return redirect(config('cms.url') . '/login');
+		}
+	}
+
+	public function login () {
+		$firstTab = $this->cms->getFirstTab();
+
+		if (\Auth::guard('admin')->check()) {
+			return redirect(config('cms.url') . '/' . $firstTab);
+		} else {
+			$form = new \Form('login');
+
+			return view("$this->viewsPath.login", compact('form'));
+		}
+	}
+
+	public function logout () {
+		\Auth::guard('admin')->logout();
+
+		return redirect(config('cms.url'));
 	}
 
 	public function main () {
@@ -86,6 +98,6 @@ class CmsController extends Controller
 	}
 
 	public function export (Request $request) {
-		$this->cms->export($request);
+		return $this->cms->export($request);
 	}
 }

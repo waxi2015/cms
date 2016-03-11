@@ -9,7 +9,7 @@
 		$('#<?=$this->getId()?>').change(function(e){
 			var values = $('#<?=$this->getListId()?>-filters').serializeObject();
 			
-			$('#<?=$this->getListId()?>').wxlist('refresh', {
+			$('#<?=$this->getListId()?>').waxrepeater('refresh', {
 				filters : values
 			});
 		})

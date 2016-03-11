@@ -169,6 +169,20 @@ class Cms extends Cms\Ancestor {
 		}
 	}
 
+	public function getFirstTab ($nth = 0) {
+		foreach ($this->cmsDescriptor as $key => $tab) {
+			$first = $key;
+
+			foreach ($this->cmsDescriptor as $childKey => $one) {
+				if (isset($one['parent']) && $one['parent'] == $first) {
+					return $childKey;
+				}
+			}
+
+			return $first;
+		}
+	}
+
 	public function export ($params) {
 		$export = new Cms\Export($this, $params);
 		echo $export->get();
@@ -426,11 +440,15 @@ class Cms extends Cms\Ancestor {
 			case 'list':
 				$page = isset($this->request->page) ? $this->request->page : null;
 
-				$module = new Cms\Module\Repeater($this->list['descriptor'], array('page' => $page), $this->moduleDescriptorExtensions);
+				$descriptor = isset($this->list['descriptor']) ? $this->list['descriptor'] : $this->list;
+
+				$module = new Cms\Module\Repeater($descriptor, array('page' => $page), $this->moduleDescriptorExtensions);
 				break;
 
 			case 'form':
-				$module = new Cms\Module\Form($this->form['descriptor'], array('id' => $this->getId(), 'data' => $this->getFormData(), 'type' => $this->type), $this->moduleDescriptorExtensions);
+				$descriptor = isset($this->form['descriptor']) ? $this->form['descriptor'] : $this->form;
+
+				$module = new Cms\Module\Form($descriptor, array('id' => $this->getId(), 'data' => $this->getFormData(), 'type' => $this->type), $this->moduleDescriptorExtensions);
 				break;
 		}
 

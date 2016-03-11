@@ -1,0 +1,148 @@
+.header {
+	margin: 0;
+    float: left;
+    width: 100%;
+    background: #ffffff;
+
+    &.with-border {
+    	border-bottom: 1px solid #e5e6e7;
+    }
+
+	h1 {
+		/*color: #3dbbd2;*/
+	    font-weight: 300;
+	    font-size: 31px;
+	    margin: 28px 0 28px 30px;
+	    padding: 0;
+	    float: left;
+	    line-height: 30px;
+	}
+
+	.navbar-toggle {
+	    float: left;
+		margin: 22px -10px 22px 22px;
+
+		i {
+			background: #3DBBD2;
+		    display: block;
+		    height: 3px;
+		    width: 26px;
+		    margin: 4px 0;
+		}
+	}
+
+	.actions {
+		float: right;
+    	margin: 28px 30px 0;
+
+    	.btn {
+		    border-radius: 3px;
+		    margin-top: -4px;
+    		margin-left: 3px;
+		    padding: 6px 13px;
+			font-size: 14px;
+			font-weight: 400;
+			line-height: 1.42857143;
+			float: right;
+			margin-left: 8px;
+
+		    &.btn-primary {
+		    	border: 1px solid #3dbbd2;
+				background: #3dbbd2;
+		    }
+
+		    &.btn-default {
+		    	border: 1px solid #e7e7e7;
+				background: #fff;
+				padding: 7px 13px;
+				margin-top: -5px;
+
+				&:hover {
+					background: #F3F3F4;
+				}
+		    }
+
+		    &.btn-plain {
+		    	&:active, &:focus {
+		    		box-shadow: none;
+		    	}
+		    }
+    	}
+	}
+
+	.filters {
+	    float: left;
+	    width: 100%;
+	    padding: 13px 27px 20px 30px;
+	    background: #F9F9F9;
+	    border: 1px solid #e7e7e7;
+
+	    label {
+	    	float: left;
+		    font-weight: 600;
+		    color: #BDC5C7;
+		    text-transform: uppercase;
+		    margin: 17px 30px 0 0;
+		    font-size: 13px;
+	    }
+
+		form {
+			float: right;
+			font-size: 0;
+		}
+
+		input, select {
+			padding: 3px 10px;
+		    height: 36px;
+		    border-radius: 1px;
+		    border: 1px solid #e5e6e7;
+		    font-size: 14px;
+		    margin: 7px 7px 0 0;
+		}
+	}
+}
+
+@media screen and (max-width: $screen-sm) {
+	.header {
+		.actions {
+			float: left;
+		    clear: both;
+		    border-top: 1px solid #e7e7e7;
+		    padding: 20px 20px 19px;
+		    margin: 0;
+		    width: 100%;
+		    text-align: left;
+
+		    .btn {
+		    	float: none;
+		    }
+		}
+
+		.filters {
+			padding: 20px 30px;
+
+			label {
+			    margin: 0 30px 0 0;
+		    }
+
+			form {
+				width: 100%;
+			}
+
+			input, select {
+				width: 49%;
+    			margin: 10px 1% 0px 0;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: $screen-xs) {
+	.header {
+		.filters {
+			input, select {
+				width: 100%;
+			}
+		}
+	}
+}
