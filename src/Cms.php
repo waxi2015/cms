@@ -6,7 +6,7 @@ class Cms extends Cms\Ancestor {
 
 	# describes MODULE => TYPE
 	# (which type of action is assigned to a certain module)
-	# customAction => 'customModule'
+	# customAction => 'customModule' 
 	public $modules = [
 		'add' => 'form',
 		'edit' => 'form',
