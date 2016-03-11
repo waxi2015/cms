@@ -37,8 +37,4 @@ class Admin extends Authenticatable
 
         return false;
     }
-
-    public static function emailNotExists ($email) {
-        return !(bool) \DB::table('admins')->where('email', $email)->count();
-    }
 }
