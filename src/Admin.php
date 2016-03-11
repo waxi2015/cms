@@ -1,6 +1,6 @@
 <?php
 
-namespace Waxis\Cms;
+namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 

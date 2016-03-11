@@ -44,7 +44,7 @@ class Login {
 			],
 			'after' => [
 				[
-					'class' => '\Waxis\Cms\Admin',
+					'class' => '\App\Admin',
 					'method' => 'login'
 				]
 			],
