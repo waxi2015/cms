@@ -16,8 +16,5 @@
 				</div>
             </div>
         </div>
-	    
-	    <!-- App -->
-        <script type="text/javascript" src="/js/admin/cms.js"></script>
 	</body>
 </html>

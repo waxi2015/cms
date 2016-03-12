@@ -21,6 +21,7 @@ var redirectToAdmin = function () {
 }
 
 $(function(){
+
 	/* Init sidebar scrolling */
 	perfectSidebarScroll();
 	sidebarMinHeight();
@@ -45,7 +46,7 @@ $(function(){
 
 	$(window).on('beforeunload', function(e) {
 		if (letLeave == false) {
-			return 'Az oldalon nem mentett adatok vannak.';
+			return Lang.get('cms.confirm_leave_msg');
 		}
 	})
 })

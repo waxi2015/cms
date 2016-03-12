@@ -17,7 +17,7 @@ class Adminpassword {
 				[
 					'type' => 'password',
 					'name' => 'password',
-					'label' => 'Jelszó',
+					'label' => 'cms.admins.form.password',
 					'required' => true,
 					'convert' => 'bcrypt',
 					'load' => false,
@@ -26,7 +26,7 @@ class Adminpassword {
 			'feedback' => [
 				'true' => [
 					'valid' => true,
-					'message' => 'Jelszó módosítás sikeres'
+					'message' => 'cms.admins.form.password_success_msg'
 				]
 			]
 		);

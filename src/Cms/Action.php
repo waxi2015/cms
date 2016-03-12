@@ -276,7 +276,7 @@ class Action extends Ancestor {
 	public function addSuccessFeedbackToForm () {
 		$this->cms->moduleDescriptorExtensions['form'][] = [
 			'feedback' => [
-				'true'=>['message'=>'Mentés sikeres','valid'=>true]
+				'true'=>['message'=>\Lang::get('cms.form.save_success_msg'),'valid'=>true]
 			]
 		];
 	}

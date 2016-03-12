@@ -54,6 +54,12 @@ elixir(function(mix) {
 		'../admin/js/cms.js',
 	], 'public/js/admin/cms.js');
 
+    // App js 
+
+    mix.scripts([
+    	'app.js'
+    ], 'public/js/app.js');
+
 	// Form styles 
 
 	mix.sass([

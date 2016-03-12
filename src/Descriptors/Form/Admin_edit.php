@@ -11,17 +11,17 @@ class Admin_edit {
 				[
 					'type' => 'image',
 					'name' => 'image',
-					'label' => 'Profil kép',
+					'label' => 'cms.admins.form.image',
 					'imageDescriptor' => 'admin',
 				],
 				[
 					'name' => 'name',
-					'label' => 'Név',
+					'label' => 'cms.admins.form.name',
 					'required' => true,
 				],
 				[
 					'name' => 'email',
-					'label' => 'Email',
+					'label' => 'cms.admins.form.email',
 					'readonly' => true,
 				],
 			]

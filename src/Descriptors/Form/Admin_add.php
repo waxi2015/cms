@@ -11,31 +11,31 @@ class Admin_add {
 				[
 					'type' => 'image',
 					'name' => 'image',
-					'label' => 'Profil kép',
+					'label' => 'cms.admins.form.image',
 					'imageDescriptor' => 'admin',
 				],
 				[
 					'name' => 'name',
-					'label' => 'Név',
+					'label' => 'cms.admins.form.name',
 					'required' => true,
 				],
 				[
 					'type' => 'email',
 					'name' => 'email',
-					'label' => 'Email',
+					'label' => 'cms.admins.form.email',
 					'required' => true,
 					'validators' => [
 						'remote' => [
 							'table' => 'admins',
 							'field' => 'email',
-							'message' => 'Ez az email cím már létezik'
+							'message' => 'cms.admins.form.email_exists'
 						]
 					],
 				],
 				[
 					'type' => 'password',
 					'name' => 'password',
-					'label' => 'Jelszó',
+					'label' => 'cms.admins.form.password',
 					'required' => true,
 					'convert' => 'bcrypt',
 				]

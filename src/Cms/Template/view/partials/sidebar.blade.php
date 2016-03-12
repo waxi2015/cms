@@ -5,7 +5,7 @@
 		<span class="image"><i class="fa fa-user"></i></span>
 	@endif
 	<span class="name">{{ Auth::guard('admin')->user()->name }}</span>
-	<a href="{{ route('logout') }}"><i class="fa fa-power-off"></i> Logout</a>
+	<a href="{{ route('logout') }}"><i class="fa fa-power-off"></i> {{ Lang::get('cms.logout') }}</a>
 </div>
 
 <ul class="metismenu" id="menu">

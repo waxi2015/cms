@@ -14,32 +14,32 @@ class Login {
 				],
 				[
 					'name' => 'email',
-					'placeholder' => 'Email',
+					'placeholder' => 'cms.login.email',
 					'suffix' => '<svg class="svg-login-user"><use xlink:href="/svg/admin/sprite.svg#login-user"></use></svg>',
 					'required' => true,
 				],
 				[
 					'type' => 'password',
 					'name' => 'password',
-					'placeholder' => 'Jelszó',
+					'placeholder' => 'cms.login.password',
 					'suffix' => '<svg class="svg-login-password"><use xlink:href="/svg/admin/sprite.svg#login-password"></use></svg>',
 					'required' => true,
 				],
 				[
 					'type' => 'swap',
 					'name' => 'remember',
-					'label' => 'Jegyezzen meg',
+					'label' => 'cms.login.remember',
 					'onText' => '&nbsp;',
 					'offText' => '&nbsp;'
 				],
 				[
 					'type' => 'submit',
-					'text' => 'Belépés',
+					'text' => 'cms.login.login',
 				],
 				/*[
 					'type' => 'anchor',
 					'class' => 'forgotten-password',
-					'text' => 'Elfelejtett jelszó',
+					'text' => 'cms.login.forgotten_password',
 				]*/
 			],
 			'after' => [
@@ -51,7 +51,7 @@ class Login {
 			'feedback' => [
 				'false' => [
 					'valid' => false,
-					'message' => 'Hibás jelszó vagy email'
+					'message' => 'cms.login.wrong_email'
 				],
 				'true' => [
 					'valid' => true,

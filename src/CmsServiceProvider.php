@@ -29,6 +29,7 @@ class CmsServiceProvider extends ServiceProvider
             __DIR__.'/migrations' => 'database/migrations',
             __DIR__.'/Admin.php' => app_path('Admin.php'),
             __DIR__.'/gulpfile.js' => 'gulpfile.js',
+            __DIR__.'/lang' => resource_path('lang'),
         ]);
     }
 

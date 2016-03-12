@@ -20,6 +20,8 @@ class CmsController extends Controller
 	public $viewsPath = null;
 
 	public function __construct(Request $request, Route $route) {
+		\Lang::setLocale(config('cms.locale'));
+
 		$this->middleware('auth:admin', ['except' => ['login', 'index']]);
 
 		$action = explode('@',$route->getActionName())[1];

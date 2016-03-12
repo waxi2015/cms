@@ -11,9 +11,9 @@ class Admin {
 			'admins' => [
 				'icon' => 'fa fa-user-md',
 				'label' => [
-					'tab' => 'Admin felhasználók',
-					'singular' => 'Admin',
-					'plural' => 'Admin felhasználók',
+					'tab' => 'cms.admins.tab',
+					'singular' => 'cms.admins.singular',
+					'plural' => 'cms.admins.plural',
 				],
 				'table' => 'admins',
 				'actions' => ['add','edit','delete'],
@@ -22,17 +22,17 @@ class Admin {
 						'id' => 'admins',
 						'fields' => [
 							[
-								'label' => 'Név',
+								'label' => 'cms.admins.list.name',
 								'name' => 'name',
 							],
 							[
-								'label' => 'Email',
+								'label' => 'cms.admins.list.email',
 								'name' => 'email',
 							],
 						],
 						'buttons' => [
 							[
-								'label' => 'Jelszó módosítása',
+								'label' => 'cms.admins.list.button_change_password',
 								'class' => 'btn btn-primary',
 								'url' => '/admin/admins/password/%id',
 							]

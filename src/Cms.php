@@ -312,7 +312,7 @@ class Cms extends Cms\Ancestor {
 				$tabs[$tab] = [
 					'name' => $tab,
 					'icon' => isset($value['icon']) ? $value['icon'] : null,
-					'label' => isset($value['label']['tab']) ? $value['label']['tab'] : $value['label']['plural'],
+					'label' => trans(isset($value['label']['tab']) ? $value['label']['tab'] : $value['label']['plural']),
 					'url' => $this->createUrl('main', $tab),
 					'parent' => isset($value['parent']) ? $value['parent'] : null,
 					'selected' => $this->tab == $tab ? true : false,
@@ -383,15 +383,15 @@ class Cms extends Cms\Ancestor {
 		if ($this->title === null) {
 			switch ($this->getType()) {
 				case 'list':
-					$title = isset($this->list['label']) ? $this->list['label'] : $plural;
+					$title = isset($this->list['label']) ? trans($this->list['label']) : trans($plural);
 					break;
 
 				case 'edit':
-					$title = isset($this->form['label']) ? $this->form['label'] : $singular . ' szerkesztése';
+					$title = isset($this->form['label']) ? trans($this->form['label']) : trans('cms.title.edit',['title'=>trans($singular)]);
 					break;
 
 				case 'add':
-					$title = $singular . ' hozzáadása';
+					$title = trans('cms.title.add',['title'=>trans($singular)]);
 					break;
 			}
 

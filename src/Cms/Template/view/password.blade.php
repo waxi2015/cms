@@ -13,10 +13,10 @@
 
 	<div class="header with-border" id="st-trigger-effects">
 	    <button type="button" data-effect="st-effect-1" class="navbar-toggle"><i></i><i></i><i></i></button>
-		<h1>Jelszó módosítása</h1>
+		<h1>{{ trans('cms.change_password.title') }}</h1>
 		<div class="actions">
-			<a href="" id="save-form" class="btn btn-primary">Mentés</a>
-			<a href="/admin/admins" class="btn btn-plain">Vissza</a>
+			<a href="" id="save-form" class="btn btn-primary">{{ trans('cms.change_password.button_save') }}</a>
+			<a href="/admin/admins" class="btn btn-plain">{{ trans('cms.change_password.button_back') }}</a>
 		</div>
 	</div>
 	<?=$form->render()?>

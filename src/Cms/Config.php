@@ -7,13 +7,13 @@ class Config {
 	public $templateDirectory = '/Template';
 
 	public $translation = [
-		'add' => 'Add',
-		'addNew' => 'Add new',
-		'save' => 'Save',
-		'cancel' => 'Cancel',
-		'delete' => '<i class="fa fa-trash"></i>',
-		'edit' => '<i class="fa fa-pencil"></i>',
-		'order' => 'Sorrend',
+		'add' => 'add',
+		'addNew' => 'add_new',
+		'save' => 'save',
+		'cancel' => 'cancel',
+		'delete' => 'delete',
+		'edit' => 'edit',
+		'order' => 'order',
 	];
 
 	public function getUrls () {
@@ -37,7 +37,7 @@ class Config {
 	}
 
 	public function getTranslation ($key) {
-		return $this->translation[$key];
+		return \Lang::get('cms.list.buttons.'.$this->translation[$key]);
 	}
 
 	public function getTranslations () {
