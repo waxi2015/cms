@@ -8,5 +8,9 @@ class Multilingual extends \Waxis\Cms\Cms\Action {
 		if ($this->list !== null) {
 			$this->addMultilingualWhereToList();
 		}
+
+		if ($this->form !== null) {
+			$this->addMultilingualToForm();
+		}
 	}
 }

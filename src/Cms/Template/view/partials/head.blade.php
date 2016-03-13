@@ -23,7 +23,6 @@
 
 <!-- Admin -->
 <link href="/css/admin/theme.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="/js/admin/cms.js"></script>
 
 <!-- Favicons -->
 <link rel="apple-touch-icon" sizes="57x57" href="/favicon/admin/apple-icon-57x57.png">

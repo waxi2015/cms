@@ -2,6 +2,7 @@ letLeave = true;
 
 var perfectSidebarScroll = function () {
 	if ($('.st-menu').css('position') == 'fixed') {
+		$('.st-menu').css({'min-height': 0});
 		$('.st-menu').perfectScrollbar();
 	} else {
 		$('.st-menu').perfectScrollbar('destroy');
@@ -13,7 +14,9 @@ var sidebarMinHeight = function () {
 		menuFooterHeight = $('.st-menu .menu-footer').outerHeight(true) + (parseInt($('.st-menu .menu-footer').css('bottom')) * 2),
 		minHeight = menuHeaderHeight + menuHeight + menuFooterHeight;
 
-	$('.st-menu').css({'min-height': minHeight + 'px'});
+	if ($('.st-menu').css('position') != 'fixed') {
+		$('.st-menu').css({'min-height': minHeight + 'px'});
+	}
 }
 
 var redirectToAdmin = function () {
@@ -28,6 +31,7 @@ $(function(){
 	
 	$(window).resize(function(){
 		perfectSidebarScroll();
+		sidebarMinHeight();
 	})
 
 	/* Init menu */
@@ -45,7 +49,7 @@ $(function(){
     $('[data-toggle="tooltip"]').tooltip();
 
 	$(window).on('beforeunload', function(e) {
-		if (letLeave == false) {
+		if (letLeave == false && watchLeave === true) {
 			return Lang.get('cms.confirm_leave_msg');
 		}
 	})

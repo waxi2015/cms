@@ -2,6 +2,12 @@
 <html>
 	<head>
 	   @include('admin.partials.head')
+
+	   <script>
+			$(function(){
+				watchLeave = true;
+			})
+		</script>
 	</head>
 	<body>
 		<div id="st-container" class="st-container container-fluid">
@@ -16,5 +22,8 @@
 				</div>
             </div>
         </div>
+
+        <? /* Here for reason */ ?>
+		<script type="text/javascript" src="/js/admin/cms.js"></script>
 	</body>
 </html>

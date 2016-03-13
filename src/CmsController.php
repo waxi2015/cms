@@ -69,7 +69,7 @@ class CmsController extends Controller
 		return redirect(config('cms.url'));
 	}
 
-	public function main () {
+	public function main (Request $request) {
 		$type = $this->cms->getMainType();
 
 		switch ($type) {
@@ -78,7 +78,7 @@ class CmsController extends Controller
 				break;
 
 			default:
-				return $this->{$type}();
+				return $this->{$type}($request);
 				break;
 		}
 	}

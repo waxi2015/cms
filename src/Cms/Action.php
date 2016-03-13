@@ -299,5 +299,9 @@ class Action extends Ancestor {
 		];
 	}
 
-
+	public function addMultilingualToForm () {
+		$this->cms->moduleDescriptorExtensions['form'][] = [
+			'multilingual' => true
+		];
+	}
 }
