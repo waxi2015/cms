@@ -18,9 +18,10 @@ class CmsServiceProvider extends ServiceProvider
             require __DIR__.'/routes.php';
         }
 
-        $this->publishes([
+        $publishes = [
             __DIR__.'/assets' => resource_path('assets/admin'),
-            __DIR__.'/Descriptors' => app_path('Descriptors'),
+            __DIR__.'/Descriptors/Form' => app_path('Descriptors/Form'),
+            __DIR__.'/Descriptors/Image' => app_path('Descriptors/Image'),
             __DIR__.'/config/auth.php' => config_path('auth.php'),
             __DIR__.'/config/cms.php' => config_path('cms.php'),
             __DIR__.'/Controllers/AdminController.php' => app_path('Http/Controllers/AdminController.php'),
@@ -30,7 +31,13 @@ class CmsServiceProvider extends ServiceProvider
             __DIR__.'/Admin.php' => app_path('Admin.php'),
             __DIR__.'/gulpfile.js' => 'gulpfile.js',
             __DIR__.'/lang' => resource_path('lang'),
-        ]);
+        ];
+
+        if (!file_exists(app_path('Descriptors/Cms/Admin.php'))) {
+            $publishes[__DIR__.'/Descriptors/Cms/Admin.php'] = app_path('Descriptors/Cms/Admin.php');
+        }
+
+        $this->publishes($publishes);
     }
 
     /**
