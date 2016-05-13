@@ -16,6 +16,10 @@ class Ancestor extends \Waxis\Cms\Cms\Ancestor {
 
 	public $fields = null;
 
+	public $order = 'ASC';
+
+	public $by = 'id';
+
 	public function __construct ($descriptor) {
 		$this->name = $descriptor['name'];
 		$this->fields = $descriptor['fields'];

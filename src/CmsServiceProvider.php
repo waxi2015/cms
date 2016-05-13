@@ -14,7 +14,7 @@ class CmsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if (! $this->app->routesAreCached()) {
+        if (! $this->app->routesAreCached() && config('cms.routes')) {
             require __DIR__.'/routes.php';
         }
 

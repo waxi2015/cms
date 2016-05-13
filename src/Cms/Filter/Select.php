@@ -11,6 +11,14 @@ class Select extends Ancestor {
 	public function __construct ($descriptor) {
 		$this->source = $descriptor['source'];
 
+		if (isset($this->source['order'])) {
+			$this->order = $this->source['order'];
+		}
+
+		if (isset($this->source['by'])) {
+			$this->by = $this->source['by'];
+		}
+
 		parent::__construct($descriptor);
 	}
 
@@ -30,7 +38,7 @@ class Select extends Ancestor {
 		$source = $this->getSource();
 
 		# @todo: check
-		$results = DB::table($source['table'])->get()->toArray();
+		$results = to_array(\DB::table($source['table'])->orderBy($this->getBy(), $this->getOrder())->get());
 
 		$temp = array();
 
@@ -43,5 +51,13 @@ class Select extends Ancestor {
 
 	public function getSource () {
 		return $this->source;
+	}
+
+	public function getOrder () {
+		return $this->order;
+	}
+
+	public function getBy () {
+		return $this->by;
 	}
 }
