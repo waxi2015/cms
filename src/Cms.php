@@ -312,6 +312,7 @@ class Cms extends Cms\Ancestor {
 				$tabs[$tab] = [
 					'name' => $tab,
 					'icon' => isset($value['icon']) ? $value['icon'] : null,
+					'iconHtml' => isset($value['iconHtml']) ? $value['iconHtml'] : null,
 					'label' => trans(isset($value['label']['tab']) ? $value['label']['tab'] : $value['label']['plural']),
 					'url' => $this->createUrl('main', $tab),
 					'parent' => isset($value['parent']) ? $value['parent'] : null,
