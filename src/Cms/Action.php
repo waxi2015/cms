@@ -71,6 +71,12 @@ class Action extends Ancestor {
 		}
 	}
 
+	public function addViewModeToForm () {
+		$this->cms->moduleDescriptorExtensions['form'][] = [
+			'viewMode' => true
+		];
+	}
+
 	public function addPermissionToList () {
 		$this->cms->moduleDescriptorExtensions['list'][] = [
 			'permission' => 'admin'
@@ -96,6 +102,10 @@ class Action extends Ancestor {
 	}
 
 	public function addAddButtonToList () {
+		if (!$this->cms->hasPermissionTo('add', $this->cms->tab)) {
+			return;
+		}
+
 		$this->cms->descriptorExtensions['list'][] = [
 			'buttons' => [
 				[
@@ -120,6 +130,10 @@ class Action extends Ancestor {
 	}
 
 	public function addSaveButtonToForm () {
+		if (!$this->cms->hasPermissionTo('edit', $this->cms->tab)) {
+			return;
+		}
+
 		$this->cms->descriptorExtensions['form'][] = [
 			'buttons' => [
 				[
@@ -181,6 +195,10 @@ class Action extends Ancestor {
 	}
 
 	public function addEditButtonToList () {
+		if (!$this->cms->hasPermissionTo('edit', $this->cms->tab)) {
+			return;
+		}
+
 		$this->cms->moduleDescriptorExtensions['list'][] = [
 			'buttons' => [
 				[
@@ -193,6 +211,10 @@ class Action extends Ancestor {
 	}
 
 	public function addDeleteButtonToList () {
+		if (!$this->cms->hasPermissionTo('delete', $this->cms->tab)) {
+			return;
+		}
+
 		$this->cms->moduleDescriptorExtensions['list'][] = [
 			'buttons' => [
 				[
@@ -259,6 +281,10 @@ class Action extends Ancestor {
 	}
 
 	public function addOrderColumnToList () {
+		if (!$this->cms->hasPermissionTo('order', $this->cms->tab)) {
+			return;
+		}
+
 		# if the list doesn't have an order field yet then add it
 		if (!$this->hasOrderColumn) {
 			$this->cms->moduleDescriptorExtensions['list'][] = [

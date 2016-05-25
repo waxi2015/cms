@@ -72,6 +72,10 @@ class CmsController extends Controller
 	public function main (Request $request) {
 		$type = $this->cms->getMainType();
 
+		if (!$this->cms->hasPermissionTo('reach', $request->tab)) {
+			\App::abort(403, 'Unauthorized action.');
+		}
+
 		switch ($type) {
 			case 'list':
 				return view("$this->viewsPath.list", $this->data);
@@ -83,7 +87,15 @@ class CmsController extends Controller
 		}
 	}
 
-	public function edit () {
+	public function edit (Request $request) {
+		if (!$this->cms->hasPermissionTo('edit', $request->tab)) {
+			if (!$this->cms->hasPermissionTo('view', $request->tab)) {
+				\App::abort(403, 'Unauthorized action.');
+			} else {
+				$this->cms->addModifier('addViewModeToForm');
+			}
+		}
+
 		switch ($this->cms->getEditType()) {
 			case 'edit':
 				return view("$this->viewsPath.edit", $this->data);
@@ -95,11 +107,19 @@ class CmsController extends Controller
 		}
 	}
 
-	public function add () {
+	public function add (Request $request) {
+		if (!$this->cms->hasPermissionTo('add', $request->tab)) {
+			\App::abort(403, 'Unauthorized action.');
+		}
+
 		return view("$this->viewsPath.add", $this->data);
 	}
 
 	public function export (Request $request) {
+		if (!$this->cms->hasPermissionTo('export', $request->tab)) {
+			\App::abort(403, 'Unauthorized action.');
+		}
+
 		return $this->cms->export($request);
 	}
 }

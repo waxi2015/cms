@@ -169,6 +169,45 @@ class Cms extends Cms\Ancestor {
 		}
 	}
 
+	public function addModifier ($modifier) {
+		$action = new Cms\Action($this);
+		$action->$modifier();
+	}
+
+	public function hasPermissionTo ($action, $tab) {
+		$roles = null;
+		if (isset($this->cmsDescriptor[$tab]['roles'])) {
+			$roles = $this->cmsDescriptor[$tab]['roles'];
+		}
+
+		$role = null;
+		if (\Auth::guard('admin')->check() && isset(\Auth::guard('admin')->user()->role)) {
+			$role = \Auth::guard('admin')->user()->role;
+		}
+
+		if ($roles === null || $role === null) {
+			return true;
+		}
+
+		switch ($action) {
+			case 'reach':
+				if (array_key_exists($role, $roles) || in_array($role, $roles)) {
+					return true;
+				} else {
+					return false;
+				}
+				break;
+
+			default:
+				if (isset($roles[$role]) && in_array($action, $roles[$role])) {
+					return true;
+				} else {
+					return false;
+				}
+				break;
+		}
+	}
+
 	public function getFirstTab ($nth = 0) {
 		foreach ($this->cmsDescriptor as $key => $tab) {
 			$first = $key;
@@ -309,6 +348,10 @@ class Cms extends Cms\Ancestor {
 			$tabs = array();
 
 			foreach ($this->cmsDescriptor as $tab => $value) {
+				if (!$this->hasPermissionTo('reach', $tab)) {
+					continue;
+				}
+
 				$tabs[$tab] = [
 					'name' => $tab,
 					'icon' => isset($value['icon']) ? $value['icon'] : null,
