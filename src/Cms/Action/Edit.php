@@ -13,6 +13,7 @@ class Edit extends \Waxis\Cms\Cms\Action {
 			$this->addSaveToForm();
 			$this->addIdFieldToForm();
 			$this->addSuccessFeedbackToForm();
+			$this->addErrorFeedbackToForm();
 		}
 
 		if ($this->list !== null) {

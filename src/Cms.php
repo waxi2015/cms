@@ -85,6 +85,14 @@ class Cms extends Cms\Ancestor {
 
 		$this->request = $request;
 
+		if (isset($this->descriptor['module'])) {
+			$moduleName = is_array($this->descriptor['module']) ? $this->descriptor['module']['module'] : $this->descriptor['module'];
+			$moduleClass = 'Waxis\Cms\Cms\Module\\' . ucfirst($moduleName);
+			$module = new $moduleClass;
+
+			$module->extendDescriptor($this);
+		}
+
 		# action defines the type
 		if (isset($this->request->action)) {
 			$this->type = $this->request->action;

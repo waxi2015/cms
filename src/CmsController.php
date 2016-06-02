@@ -122,4 +122,26 @@ class CmsController extends Controller
 
 		return $this->cms->export($request);
 	}
+
+	public function importcontent()
+	{
+		$tab = $this->cms->tab;
+
+		$table = $this->cms->descriptor['table'];
+		$file = $this->cms->descriptor['file'];
+
+		if (\Waxis\Cms\Cms\Module\Content::import($table, $file)) {
+			$return = [
+				'valid' => true,
+				'message' => 'Import successful'
+			];
+		} else {
+			$return = [
+				'valid' => false,
+				'message' => 'Import failed, refresh page and try again'
+			];
+		}
+
+		return $return;
+	}
 }

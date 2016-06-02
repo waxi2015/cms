@@ -307,6 +307,14 @@ class Action extends Ancestor {
 		];
 	}
 
+	public function addErrorFeedbackToForm () {
+		$this->cms->moduleDescriptorExtensions['form'][] = [
+			'feedback' => [
+				'false'=>['message'=>\Lang::get('cms.form.save_error_msg'),'valid'=>false]
+			]
+		];
+	}
+
 	public function addFiltersToList () {
 		$this->cms->moduleDescriptorExtensions['list'][] = [
 			'filters' => $this->cms->list['filters']
