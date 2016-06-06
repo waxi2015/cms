@@ -13,8 +13,8 @@ class Content {
 			$table = $options['table'];
 		}
 
-		$file = str_replace('-contents', '', $cms->tab);
-		if (isset($options['table'])) {
+		$file = str_replace('_','-',str_replace('-contents', '', $cms->tab));
+		if (isset($options['file'])) {
 			$file = $options['file'];
 		}
 
@@ -94,7 +94,7 @@ class Content {
 	public static function createFileFromDb($data, $params)
 	{
 		$table = $params['table'];
-		$fileName = str_replace('_contents', '', $table);
+		$fileName = str_replace('_','-',str_replace('_contents', '', $table));
 
 		if (!\Waxis\Cms\Cms\Module\Content::import($table, $fileName)) {
 			return false;
@@ -111,7 +111,7 @@ class Content {
 				$content .= 'return [' . PHP_EOL;
 
 				foreach ($tags as $tag) {
-					$content .= "	'".$tag['tag']."' => '".$tag[$iso]."',". PHP_EOL;
+					$content .= "	'".$tag['tag']."' => '".addslashes($tag[$iso])."',". PHP_EOL;
 				}
 
 				$content .= '];';
@@ -177,6 +177,7 @@ class Content {
 				\DB::table($table)->insert($import);
 			}
 		} catch (\Exception $e) {
+			//DX($e->getMessage());
 			return false;
 		}
 
