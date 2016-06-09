@@ -10,6 +10,7 @@
 			var values = $('#<?=$this->getListId()?>-filters').serializeObject();
 			
 			$('#<?=$this->getListId()?>').waxrepeater('refresh', {
+				page: 1,
 				filters : values
 			});
 		})

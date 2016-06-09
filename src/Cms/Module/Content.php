@@ -4,6 +4,26 @@ namespace Waxis\Cms\Cms\Module;
 
 class Content {
 
+	public static function convertToDb ($data) {
+		$return = $data;
+
+		foreach (config('locale.languages') as $iso => $lang) {
+			$return[$iso] = nl2br($return[$iso]);
+		}
+
+		return $return;
+	}
+
+	public static function convertToForm ($data) {
+		$return = $data;
+
+		foreach (config('locale.languages') as $iso => $lang) {
+			$return[$iso] = br2nl($return[$iso]);
+		}
+
+		return $return;
+	}
+
 	public function extendDescriptor (&$cms) {
 		$module = $cms->descriptor['module'];
 		$options = getValue($module, 'options', []);
@@ -25,6 +45,13 @@ class Content {
 		$cms->descriptor['form'] = [
 			'descriptor' => [
 				'id' => $cms->tab . '-form',
+				'before' => [
+					[
+						'class' => '\Waxis\Cms\Cms\Module\Content',
+						'method' => 'convertToDb',
+						'updateData' => true,
+					]
+				],
 				'after' => [
 					[
 						'class' => '\Waxis\Cms\Cms\Module\Content',
@@ -34,6 +61,7 @@ class Content {
 						]
 					]
 				],
+				'converters' => ['\Waxis\Cms\Cms\Module\Content::convertToForm'],
 				'elements' => [
 					[
 						'name' => 'tag',
