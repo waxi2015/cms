@@ -95,7 +95,6 @@ class Content {
 					[
 						'label' => 'EN',
 						'name' => 'en',
-						'clickable' => true,
 					],
 				]
 			],

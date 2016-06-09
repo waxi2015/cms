@@ -17,6 +17,7 @@ class Add extends \Waxis\Cms\Cms\Action {
 			$this->addIdFieldToForm();
 			$this->addSuccessFeedbackToForm();
 			$this->addErrorFeedbackToForm();
+			$this->addCreatedAtFieldToAddForm();
 		}
 	}
 }

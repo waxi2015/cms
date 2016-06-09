@@ -192,6 +192,37 @@ class Action extends Ancestor {
 		];
 	}
 
+	public function addCreatedAtFieldToAddForm () {
+		$structureTypes = ['sections','brows','bcolumns','rows','columns','elements'];
+		$formStructureType = 'elements';
+
+		foreach ($structureTypes as $type) {
+			if (isset($this->formDescriptor[$type])) {
+				$formStructureType = $type;
+			}
+		}
+
+		$addon = [
+			'class' => 'hidden',
+			'type' => 'hidden',
+			'name' => 'created_at',
+			'default' => date('Y-m-d H:i:s'),
+		];
+
+		if ($formStructureType != 'elements') {
+			$addon = [
+				'class' => 'hidden',
+				'elements' => [$addon]
+			];
+		}
+
+		$this->cms->moduleDescriptorExtensions['form'][] = [
+			$formStructureType => [
+				$addon
+			]
+		];
+	}
+
 	public function addEditButtonToList () {
 		if (!$this->cms->hasPermissionTo('edit', $this->cms->tab)) {
 			return;
