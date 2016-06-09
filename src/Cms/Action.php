@@ -145,17 +145,15 @@ class Action extends Ancestor {
 		];
 	}
 
-	public function addAddNewButtonToEditForm () {
-		/*$this->cms->descriptorExtensions['form'][] = [
+	public function addAddNewButtonToForm () {
+		$this->cms->descriptorExtensions['form'][] = [
 			'buttons' => [
-				'edit' => [
-					[
-						'label' => $this->config->getTranslation('addNew'),
-						'url' 	=> $this->config->getUrl('add'),
-					]
+				[
+					'label' => $this->config->getTranslation('addNew'),
+					'url' 	=> $this->config->getUrl('add'),
 				]
 			]
-		];*/
+		];
 	}
 
 	public function addSaveToForm () {

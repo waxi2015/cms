@@ -50,7 +50,23 @@ class Select extends Ancestor {
 	}
 
 	public function getSource () {
-		return $this->source;
+		$source = $this->source;
+
+		if (isset($source['class']) && isset($source['method'])) {
+			$sourceClass = $source['class'];
+			$sourceMethod = $source['method'];
+			$source = new $sourceClass;
+			$source = $source->$sourceMethod();
+		}
+
+		if (!is_array($source) && strstr($source, '::')){
+			$source = explode('::',$source);
+			$sourceClass = $source[0];
+			$sourceMethod = $source[1];
+			$source = call_user_func($sourceClass . '::' . $sourceMethod);
+		}
+
+		return $source;
 	}
 
 	public function getOrder () {
