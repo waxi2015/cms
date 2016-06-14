@@ -359,7 +359,7 @@ class Cms extends Cms\Ancestor {
 				if (!$this->hasPermissionTo('reach', $tab)) {
 					continue;
 				}
-
+				
 				$tabs[$tab] = [
 					'name' => $tab,
 					'icon' => isset($value['icon']) ? $value['icon'] : null,
@@ -579,5 +579,9 @@ class Cms extends Cms\Ancestor {
 
 	public function getCustomAction () {
 		return $this->customAction;
+	}
+
+	public function setTab ($tab) {
+		$this->tab = $tab;
 	}
 }
