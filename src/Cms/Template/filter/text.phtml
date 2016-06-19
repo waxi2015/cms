@@ -1,4 +1,4 @@
-<input type="text"<?=$this->getAttributesString()?> />
+<input type="text"<?=$this->getAttributesString()?> value="<?=$this->getValue()?>" />
 
 <script>
 	$(function(){
@@ -11,6 +11,8 @@
 					page: 1,
 					filters : values
 				});
+			
+				setCookie('<?=$this->getListId()?>-filters', JSON.stringify(values));
 			}
 		}).keydown(function(e){
 			if (e.which == 13 || e.keyCode == 13) {

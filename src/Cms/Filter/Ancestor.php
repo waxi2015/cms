@@ -79,4 +79,36 @@ class Ancestor extends \Waxis\Cms\Cms\Ancestor {
 	public function getListId () {
 		return $this->listId;
 	}
+
+	public function getValue () {
+		if (isset($_COOKIE[$this->getListId() . '-filters'])) {
+			$filters = json_decode($_COOKIE[$this->getListId() . '-filters'], true);
+
+			$params = [];
+			foreach ($filters as $key => $value) {
+				if ($value != '') {
+					if (preg_match('(\[[0-9]+\])', $key, $keys) != 0) {
+						foreach ($keys as $brackets) {
+							$actualKey = str_replace($brackets, '', $key);
+							if (!isset($params[$actualKey])) {
+								$params[$actualKey] = [];
+							}
+							
+							preg_match('([0-9]+)', $brackets, $arrayKeys);
+
+							foreach ($arrayKeys as $arrayKey) {
+								$params[$actualKey][$arrayKey] = $value;
+							}
+						}
+					} else {
+						$params[$key] = $value;
+					}
+				}
+			}
+
+			if (isset($params[$this->getId()])) {
+				return $params[$this->getId()];
+			}
+		}
+	}
 }

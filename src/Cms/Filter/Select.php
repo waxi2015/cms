@@ -76,4 +76,14 @@ class Select extends Ancestor {
 	public function getBy () {
 		return $this->by;
 	}
+
+	public function getSelected ($value) {
+		$filterValue = $this->getValue();
+		
+		if ($filterValue != '' && $value == $filterValue) {
+			return ' selected="selected"';
+		}
+
+		return null;
+	}
 }

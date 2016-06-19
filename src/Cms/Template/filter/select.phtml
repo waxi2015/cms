@@ -1,6 +1,6 @@
 <select<?=$this->getAttributesString()?>>
 	<? foreach ($this->getOptions() as $key => $value): ?>
-		<option value="<?=$key?>"><?=$value?></option>
+		<option value="<?=$key?>" <?=$this->getSelected($key)?>><?=$value?></option>
 	<? endforeach; ?>
 </select>
 
@@ -13,6 +13,8 @@
 				page: 1,
 				filters : values
 			});
+			
+			setCookie('<?=$this->getListId()?>-filters', JSON.stringify(values));
 		})
 	})
 </script>
