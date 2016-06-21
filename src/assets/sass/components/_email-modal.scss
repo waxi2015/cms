@@ -1,0 +1,89 @@
+.email-modal {
+	.modal-dialog {
+		width: 620px;
+	}
+
+	.modal-body {
+		padding: 0 10px;
+	}
+
+	.wax-form {
+		.wax-brow {
+			padding: 0;
+		}
+
+		.wax-bcolumn {
+			padding: 0;
+		}
+
+		.wax-element {
+			margin: 0;
+
+			label {
+				margin: 0;
+			    padding: 15px 10px 14px 17px;
+			    color: #9A9A9A;
+			    font-weight: 400;
+			    width: 92px;
+			    text-align: left;
+			    font-size: 13px;
+			    height: 44px;
+
+			    sup {
+			    	display: none;
+			    }
+			}
+
+			.form-control {
+				&:focus {
+					border-color: #e5e6e7;
+				}
+			}
+
+			.form-control-feedback {
+				top: 5px;
+			}
+
+			.help-block {
+				display: none !important;
+			}
+
+			&.wax-text {
+				.form-control {
+					width: 100%;
+				    margin: 0;
+				    padding: 10px 15px;
+				    height: 46px;
+				    font-size: 13px;
+				    color: #222222;
+				    font-family: Arial, Helvetica;
+				}
+			}
+
+			&.wax-tags {
+				.bootstrap-tagsinput {
+					width: calc(100% - 92px);
+				    border-top: 0;
+				    margin-top: 2px;
+				    border: 0;
+				}
+
+				&.has-error {
+					border: 1px solid #D23D3D;
+				}
+			}
+
+			&.wax-editor {
+				.cke {
+					width: 100%;
+				    margin: 0 0 0 0px;
+				    border: 0;
+				}
+
+				&.has-error {
+					border: 1px solid #D23D3D;
+				}
+			}
+		}
+	}
+}

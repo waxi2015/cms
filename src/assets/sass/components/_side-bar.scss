@@ -11,6 +11,7 @@
 .st-container {
 	overflow: auto;
 	background: #f3f4f5;
+	-webkit-overflow-scrolling: touch;
 }
 
 .st-pusher {
@@ -79,6 +80,11 @@
 		& > ul {
 			list-style: none;
 			padding: 0;
+			display: none;
+
+			&.collapsing {
+				display: block;
+			}
 
 			& > li {
 				position: relative;
@@ -166,7 +172,7 @@
 	display: inline-block;
     width: 60px;
     height: 67px;
-    background: url(/images/admin/logo-watermark.png) no-repeat left top;
+    background: url(/assets/admin/images/logo-watermark.png) no-repeat left top;
     position: absolute;
     bottom: 30px;
     left: 50%;
@@ -176,7 +182,8 @@
 
 @media screen and (max-width: $grid-float-breakpoint) {
 	.st-container {
-		overflow: hidden;
+		// don't remember why this was neccessary
+		//overflow: hidden;
 	}
 
 	.st-pusher {

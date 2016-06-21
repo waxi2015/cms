@@ -33,9 +33,37 @@
 	    	border-right: 1px solid #DDD;
 	    }
 
+	    &.last-page {
+	    	&.active {
+	    		border-radius: 0 3px 3px 0;
+	    		border-right: 1px solid #DDD;
+	    	}
+	    }
+
+	    &.first-page {
+	    	&.active {
+	    		border-radius: 3px 0 0 3px;
+	    	}
+	    }
+
+	    &.invisible {
+	    	display: none !important;
+	    }
+
 		b {
 
 		}
+	}
+
+	.dots {
+		border: 1px solid #DDD;
+	    line-height: 31px;
+	    font-size: 14px;
+	    width: 34px;
+	    height: 34px;
+	    display: inline-block;
+	    border-right: 0;
+	    text-align: center;
 	}
 
 	.page-info {

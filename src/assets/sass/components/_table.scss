@@ -11,10 +11,10 @@
 			background: #ffffff;
 			height: 48px;
 			white-space: nowrap;
+			text-transform: uppercase;
+			font-size: 13px;
 
 			.wax-repeater-change-order {
-				font-size: 13px;
-    			text-transform: uppercase;
 			}
 		}
 
@@ -41,6 +41,29 @@
 			a {
 				&:hover, &:active, &:focus {
 					text-decoration: none;
+				}
+			}
+		}
+
+		td.rounded {
+			img {
+				border-radius: 100px;
+			}
+		}
+
+		td.company-logo {
+			a {
+				display: flex;
+			    height: 56px;
+			    justify-content: center;
+			    align-items: center;
+			    width: 56px;
+			    border: 1px solid #e7e7e7;
+			    border-radius: 3px;
+			    background: #ffffff;
+
+				img {
+					max-width: 48px;
 				}
 			}
 		}
@@ -94,5 +117,28 @@
 		    line-height: 16px;
 		    padding: 5px 8px;
 		}
+
+		.tag {
+			color: #fff;
+		    display: inline-block;
+		    padding: 1px 4px;
+		    font-size: 11px;
+		    font-weight: 700;
+		    text-transform: uppercase;
+		    border-radius: 3px;
+		}
+	}
+
+	.wax-repeater-buttons {
+		margin: 20px 20px 0 20px;
+	}
+
+	.wax-repeater-empty {
+		text-align: center;
+	    margin-top: 50px;
+	    color: #999;
+	    font-weight: 100;
+	    font-size: 16px;
+	    font-style: italic;
 	}
 }

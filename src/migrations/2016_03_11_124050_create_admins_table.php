@@ -14,10 +14,13 @@ class CreateAdminsTable extends Migration
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('image');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password', 60);
+            $table->string('firstname')->nullable();
+            $table->string('lastname')->nullable();
+            $table->string('password')->nullable();
+            $table->string('photo')->nullable();
+            $table->string('email')->nullable();
+            $table->string('role')->nullable();
+            $table->integer('status')->comment('0inactive|1active')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
@@ -25,8 +28,10 @@ class CreateAdminsTable extends Migration
         DB::table('admins')->insert(
             array(
                 'email' => 'admin',
-                'name' => 'admin',
+                'firstname' => 'Admin',
                 'password' => bcrypt('admin'),
+                'role' => 'admin',
+                'status' => 1,
             )
         );
     }

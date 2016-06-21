@@ -1,5 +1,6 @@
 .login-page {
-	background: url('/images/admin/world-map.png') no-repeat center center #31a9bf;
+	background: url('/assets/admin/images/landing-main-bg.jpg') no-repeat center center transparent;
+	background-size: cover;
 
 	.wax-form {
 		float: none;
@@ -11,9 +12,14 @@
 	    text-align: center;
 	}
 
+	.svg-logo-apply-white {
+		fill: #ffffff;
+		width: 190px;
+	}
+
 	.logo {
 		display: inline-block;
-		background: url('/images/admin/logo.png') no-repeat center center;
+		background: url('/assets/admin/images/logo.png') no-repeat center center;
 		background-size: contain;
 	    width: 92px;
 	    height: 102px;
@@ -112,6 +118,7 @@
 			    font-weight: 300;
 			    line-height: 34px;
 			    margin-bottom: 0;
+			    justify-content: flex-start;
 		    }
 
 		    .swap {
@@ -172,13 +179,13 @@
 		   	.btn {
 				width: 255px;
 			    line-height: 33px;
-			    background: #3198AB;
+			    background: #276a96;
 			    color: #fff;
 			    font-weight: 300;
 			    transition: .3s;
 
 			    &:hover {
-			    	background: #2A8798;
+			    	background: #3179a8;
 			    }
 		   	}
 		}

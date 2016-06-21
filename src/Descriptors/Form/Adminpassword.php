@@ -21,6 +21,9 @@ class Adminpassword {
 					'required' => true,
 					'convert' => 'bcrypt',
 					'load' => false,
+					'validators' => [
+						'securePassword'
+					]
 				]
 			],
 			'feedback' => [

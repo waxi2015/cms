@@ -15,4 +15,15 @@
 		<? endif; ?>
 	</div>
 	<?$cms->renderModule()?>
+	<script>
+		$(function(){
+			var filterCookies = getCookie('<?=$cms->getModule()->getModule()->getId()?>-filters');
+
+			if (filterCookies !== null) {
+				$('#<?=$cms->getModule()->getModule()->getId()?>').waxrepeater('refresh',{
+					filters: JSON.parse(filterCookies)
+				})
+			}
+		})
+	</script>
 @endsection

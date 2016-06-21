@@ -16,14 +16,12 @@ class Login {
 					'name' => 'email',
 					'placeholder' => 'cms.login.email',
 					'suffix' => '<svg class="svg-login-user"><use xlink:href="/svg/admin/sprite.svg#login-user"></use></svg>',
-					'required' => true,
 				],
 				[
 					'type' => 'password',
 					'name' => 'password',
 					'placeholder' => 'cms.login.password',
 					'suffix' => '<svg class="svg-login-password"><use xlink:href="/svg/admin/sprite.svg#login-password"></use></svg>',
-					'required' => true,
 				],
 				[
 					'type' => 'swap',
@@ -49,6 +47,10 @@ class Login {
 				]
 			],
 			'feedback' => [
+				'inactive' => [
+					'valid' => false,
+					'message' => 'Your account is inactive'
+				],
 				'false' => [
 					'valid' => false,
 					'message' => 'cms.login.wrong_email'

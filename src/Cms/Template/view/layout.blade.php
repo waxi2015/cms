@@ -23,7 +23,9 @@
             </div>
         </div>
 
+        @include('admin.partials.email')
+
         <? /* Here for reason */ ?>
-		<script type="text/javascript" src="/js/admin/cms.js"></script>
+		<script type="text/javascript" src="{{ elixir('assets/admin/js/app.js') }}"></script>
 	</body>
 </html>

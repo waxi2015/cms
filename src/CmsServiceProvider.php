@@ -29,8 +29,8 @@ class CmsServiceProvider extends ServiceProvider
             __DIR__.'/Middleware/Authenticate.php' => app_path('Http/Middleware/Authenticate.php'),
             __DIR__.'/migrations' => 'database/migrations',
             __DIR__.'/Admin.php' => app_path('Admin.php'),
-            __DIR__.'/gulpfile.js' => 'gulpfile.js',
             __DIR__.'/lang' => resource_path('lang'),
+            __DIR__.'/public/uploads/images/admin' => public_path('uploads/images/admin'),
         ];
 
         if (!file_exists(app_path('Descriptors/Cms/Admin.php'))) {

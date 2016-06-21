@@ -32,7 +32,12 @@ class Admin extends Authenticatable
                     ], $params['remember']);
 
         if ($login) {
-            return true;
+            if (isset(\Auth::guard('admin')->user()->status) && \Auth::guard('admin')->user()->status == 0) {
+                \Auth::guard('admin')->logout();
+                return 'inactive';
+            } else {
+                return true;
+            }
         }
 
         return false;

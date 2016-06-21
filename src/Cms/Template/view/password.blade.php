@@ -6,7 +6,6 @@
 			$(document).off('click', '#save-form').on('click', '#save-form', {} ,function(e){
 				e.preventDefault();
 				$('#change-password').data('formValidation').validate();
-				$('#change-password').trigger('submit');
 			});
 		})
 	</script>
