@@ -124,7 +124,7 @@ class Content {
 			'buttons' => [
 				[
 					'class' => 'btn-primary btn-import-content',
-					'label' => 'cms.translation.btn_refresh_list',
+					'label' => trans('cms.translation.btn_refresh_list'),
 					'url' => '/admin/%tab/import-content',
 				]
 			]

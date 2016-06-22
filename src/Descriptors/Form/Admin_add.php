@@ -83,7 +83,7 @@ class Admin_add {
 										[
 											'type' => 'select',
 											'name' => 'role',
-											'label' => 'cms.admins.form.',
+											'label' => 'cms.admins.form.role',
 											'addEmpty' => true,
 											'items' => [
 												'admin' => 'Admin'
@@ -113,8 +113,8 @@ class Admin_add {
 									'name' => 'status',
 									'label' => 'cms.admins.form.status',
 									'items' => [
-										1 => 'cms.admins.form.active',
-										0 => 'cms.admins.form.inactive',
+										1 => trans('cms.admins.form.active'),
+										0 => trans('cms.admins.form.inactive'),
 									],
 									'required' => true,
 								],

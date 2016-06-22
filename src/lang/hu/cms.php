@@ -94,7 +94,7 @@ return [
     ],
 
     'translation' => [
-        'tab' => 'Weboldal tartalom',
+        'tab' => 'Weboldal tartalmak',
         'singular' => 'Weboldal tartalom',
         'plural' => 'Weboldal tartalmak',
         'tag_label' => 'Címke',

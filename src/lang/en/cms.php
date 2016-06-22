@@ -30,7 +30,8 @@ return [
             'delete' => '<i class="fa fa-trash"></i>',
             'edit' => '<i class="fa fa-pencil"></i>',
             'order' => 'Order',
-        ]
+        ],
+        'filters_label' => 'Filters'
     ],
 
     'title' => [
@@ -94,7 +95,7 @@ return [
     ],
 
     'translation' => [
-        'tab' => 'Website content',
+        'tab' => 'Website contents',
         'singular' => 'Website content',
         'plural' => 'Website contents',
         'tag_label' => 'Tag',

@@ -54,8 +54,8 @@ class Admin {
 								'label' => 'cms.admins.list.status',
 								'name' => 'status',
 								'source' => [
-									1 => 'cms.admins.list.active',
-									0 => 'cms.admins.list.inactive',
+									1 => trans('cms.admins.list.active'),
+									0 => trans('cms.admins.list.inactive'),
 								],
 							],
 						],

@@ -10,7 +10,7 @@
 		</div>
 		<? if ($cms->getFilters() !== null): ?>
 			<div class="filters">
-				<label>Filters</label> <?=$cms->renderFilters()?>
+				<label>{{trans('cms.list.filters_label')}}</label> <?=$cms->renderFilters()?>
 			</div>
 		<? endif; ?>
 	</div>
