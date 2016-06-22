@@ -4,7 +4,7 @@ Route::group(['middleware' => 'web'], function(){
 	Route::get('/admin/login', 'App\Http\Controllers\\' . config('cms.controller') . '@login');
 	Route::get('/admin/logout', ['as' => 'logout', 'uses' => 'App\Http\Controllers\\' . config('cms.controller') . '@logout']);
 
-    Route::post('/admin/getemail', 'App\Http\Controllers\\EmailController@getemail');
+    Route::post('/admin/getemail', 'App\Http\Controllers\\' . config('cms.controller') . '@getemail');
 	
 	Route::any('/admin', 'App\Http\Controllers\\' . config('cms.controller') . '@index');
 	Route::any('/admin/{tab}', 'App\Http\Controllers\\' . config('cms.controller') . '@main');

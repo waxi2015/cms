@@ -169,7 +169,7 @@ html, body {background-image: none !important; background-color: transparent !im
 <tr><td valign="top" style="padding: 5px;"><table cellpadding="0" cellspacing="0" width="100%">
 <tr><td style="padding: 0px;"><table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr><td valign="top" style="padding: 5px;"><table cellpadding="0" cellspacing="0" border="0" width="100%">
-<tr><td valign="top"><div style="text-align: left; font-family: arial; font-size: 11px; color: #9a98a1; line-height: 14px; mso-line-height: exactly; vertical-align: middle;"><p style="padding: 0; margin: 0;text-align: center;">You are receiving this email because you have registered an account on our website. <a href="{{\App\Email::getUnsubscribeLink($to['email'], env('APP_URL'))}}" style="color: #9a98a1 !important; text-decoration: underline !important;" target="_blank"><font style="color: #9a98a1;"><u>Unsubscribe</u></font></a></p></div></td>
+<tr><td valign="top"><div style="text-align: left; font-family: arial; font-size: 11px; color: #9a98a1; line-height: 14px; mso-line-height: exactly; vertical-align: middle;"><p style="padding: 0; margin: 0;text-align: center;">You are receiving this email because you have registered an account on our website. <a href="{{\Email::getUnsubscribeLink($to['email'], env('APP_URL'))}}" style="color: #9a98a1 !important; text-decoration: underline !important;" target="_blank"><font style="color: #9a98a1;"><u>Unsubscribe</u></font></a></p></div></td>
 </tr>
 </table>
 </td>

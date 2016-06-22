@@ -42,6 +42,29 @@ class Content {
 		$cms->descriptor['file'] = $file;
 		$cms->descriptor['actions'] = ['edit'];
 
+		$elements = [
+			[
+				'name' => 'tag',
+				'label' => 'cms.translation.tag_label',
+				'viewMode' => true,
+			],
+			[
+				'type' => 'hidden',
+				'name' => 'tag',
+			]
+		];
+
+		foreach (config('locale.languages') as $one) {
+			$elements[] = [
+				'type' => 'textarea',
+				'name' => $one['iso2'],
+				'label' => $one['name'],
+				'required' => true,
+			];
+
+			$filterFields[] = $one['iso2'];
+		}
+
 		$cms->descriptor['form'] = [
 			'descriptor' => [
 				'id' => $cms->tab . '-form',
@@ -62,53 +85,46 @@ class Content {
 					]
 				],
 				'converters' => ['\Waxis\Cms\Cms\Module\Content::convertToForm'],
-				'elements' => [
-					[
-						'name' => 'tag',
-						'label' => 'Tag',
-						'viewMode' => true,
-					],
-					[
-						'type' => 'textarea',
-						'name' => 'en',
-						'label' => 'EN',
-						'required' => true,
-					],
-					[
-						'type' => 'hidden',
-						'name' => 'tag',
-					],
-				]
+				'elements' => $elements
 			]
 		];
+
+		$fields = [];
+
+		$fields[] = [
+			'label' => 'cms.translation.tag_label',
+			'name' => 'tag',
+			'clickable' => true,
+		];
+
+		$filterFields = ['tag'];
+
+		foreach (config('locale.languages') as $one) {
+			$fields[] = [
+				'label' => $one['name'],
+				'name' => $one['iso2'],
+			];
+
+			$filterFields[] = $one['iso2'];
+		}
 
 		$cms->descriptor['list'] = [
 			'descriptor' => [
 				'id' => $cms->tab,
 				'limit' => 100,
-				'fields' => [
-					[
-						'label' => 'Tag',
-						'name' => 'tag',
-						'clickable' => true,
-					],
-					[
-						'label' => 'EN',
-						'name' => 'en',
-					],
-				]
+				'fields' => $fields
 			],
 			'filters' => [
 				[
 					'name' => 'search',
-					'placeholder' => 'Search',
-					'fields' => ['tag', 'en']
+					'placeholder' => trans('cms.translation.filter_search'),
+					'fields' => $filterFields
 				],
 			],
 			'buttons' => [
 				[
 					'class' => 'btn-primary btn-import-content',
-					'label' => 'Refresh list',
+					'label' => 'cms.translation.btn_refresh_list',
 					'url' => '/admin/%tab/import-content',
 				]
 			]
@@ -162,7 +178,7 @@ class Content {
 		return true;
 	}
 
-	public static function import ($table, $file) {
+	public static function import ($table, $fileName) {
 		$tags = to_array(\DB::table($table)->get());
 
 		$temp = [];
@@ -177,7 +193,7 @@ class Content {
 
 		try {
 			foreach ($languages as $iso => $language) {
-				$file = resource_path('lang/' . $iso . '/' . $file . '.php');
+				$file = resource_path('lang/' . $iso . '/' . $fileName . '.php');
 
 				$fh = fopen($file,'r');
 				while ($line = fgets($fh)) {

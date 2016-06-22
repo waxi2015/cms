@@ -34,7 +34,7 @@ class Admin_add {
 											'elements' => [
 												[
 													'type' => 'label',
-													'label' => 'Name',
+													'label' => 'cms.admins.form.name',
 													'required' => true,
 												],
 											]
@@ -45,7 +45,7 @@ class Admin_add {
 											'elements' => [
 												[
 													'name' => 'firstname',
-													'placeholder' => 'First name',
+													'placeholder' => 'cms.admins.form.firstname',
 													'required' => true
 												],
 											]
@@ -56,7 +56,7 @@ class Admin_add {
 											'elements' => [
 												[
 													'name' => 'lastname',
-													'placeholder' => 'Last name',
+													'placeholder' => 'cms.admins.form.lastname',
 													'required' => true
 												],
 											]
@@ -83,9 +83,9 @@ class Admin_add {
 										[
 											'type' => 'select',
 											'name' => 'role',
-											'label' => 'Role',
+											'label' => 'cms.admins.form.',
 											'addEmpty' => true,
-											'source' => [
+											'items' => [
 												'admin' => 'Admin'
 											],
 											'required' => true,
@@ -111,10 +111,10 @@ class Admin_add {
 								[
 									'type' => 'radiogroup',
 									'name' => 'status',
-									'label' => 'Status',
-									'source' => [
-										1 => 'Active',
-										0 => 'Inactive',
+									'label' => 'cms.admins.form.status',
+									'items' => [
+										1 => 'cms.admins.form.active',
+										0 => 'cms.admins.form.inactive',
 									],
 									'required' => true,
 								],

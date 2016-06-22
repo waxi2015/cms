@@ -10,7 +10,7 @@ class Email {
 			'permission' => 'admin',
 			'after' => [
 				[
-					'class' => '\App\Email',
+					'class' => '\Email',
 					'method' => 'sendOut',
 				]
 			],
@@ -18,12 +18,12 @@ class Email {
 				[
 					'type' => 'tags',
 					'name' => 'recipients',
-					'label' => 'Recipients',
+					'label' => 'cms.emails.send_label_recipients',
 					'required' => true,
 				],
 				[
 					'name' => 'subject',
-					'placeholder' => 'Subject',
+					'placeholder' => 'cms.emails.send_label_subject',
 					'required' => true,
 				],
 				[
@@ -59,11 +59,11 @@ class Email {
 			'feedback' => [
 				'true' => [
 					'valid' => true,
-					'message' => 'Email sent'
+					'message' => 'cms.emails.send_success'
 				],
 				'false' => [
 					'valid' => false,
-					'message' => 'There was an error during sending out email',
+					'message' => 'cms.emails.send_error',
 				]
 			],
 			'data' => [

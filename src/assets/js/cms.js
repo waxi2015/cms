@@ -35,7 +35,7 @@ var waxcms = {
 		$('.do-skip-email').unbind('click').bind('click', function (e) {
 			e.preventDefault();
 
-			if (confirm('Are you sure you do not want to send out this email?')) {
+			if (confirm(Lang.get('cms.emails.skip_confirm'))) {
 				var form = $(this).closest('.modal').find('form')
 
 				form.find('input[name="skip"]').val(1);

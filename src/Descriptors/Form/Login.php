@@ -15,13 +15,13 @@ class Login {
 				[
 					'name' => 'email',
 					'placeholder' => 'cms.login.email',
-					'suffix' => '<svg class="svg-login-user"><use xlink:href="/svg/admin/sprite.svg#login-user"></use></svg>',
+					'suffix' => '<svg class="svg-login-user"><use xlink:href="/assets/admin/svg/sprite.svg#login-user"></use></svg>',
 				],
 				[
 					'type' => 'password',
 					'name' => 'password',
 					'placeholder' => 'cms.login.password',
-					'suffix' => '<svg class="svg-login-password"><use xlink:href="/svg/admin/sprite.svg#login-password"></use></svg>',
+					'suffix' => '<svg class="svg-login-password"><use xlink:href="/assets/admin/svg/sprite.svg#login-password"></use></svg>',
 				],
 				[
 					'type' => 'swap',
@@ -49,7 +49,7 @@ class Login {
 			'feedback' => [
 				'inactive' => [
 					'valid' => false,
-					'message' => 'Your account is inactive'
+					'message' => 'cms.login.inactive'
 				],
 				'false' => [
 					'valid' => false,
