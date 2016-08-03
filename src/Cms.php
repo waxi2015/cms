@@ -217,16 +217,27 @@ class Cms extends Cms\Ancestor {
 	}
 
 	public function getFirstTab ($nth = 0) {
+		$role = 'guest';
+		$admin = \Auth::guard('admin')->user();
+
+		if ($admin !== null) {
+			$role = $admin->role;
+		}
+		
 		foreach ($this->cmsDescriptor as $key => $tab) {
-			$first = $key;
+			if (!isset($tab['roles']) || array_key_exists($role, $tab['roles']) || in_array($role, $tab['roles'])) {
+				$first = $key;
 
-			foreach ($this->cmsDescriptor as $childKey => $one) {
-				if (isset($one['parent']) && $one['parent'] == $first) {
-					return $childKey;
+				foreach ($this->cmsDescriptor as $childKey => $one) {
+					if (!isset($one['roles']) || array_key_exists($role, $one['roles']) || in_array($role, $one['roles'])) {
+						if (isset($one['parent']) && $one['parent'] == $first) {
+							return $childKey;
+						}
+					}
 				}
-			}
 
-			return $first;
+				return $first;
+			}
 		}
 	}
 
@@ -500,7 +511,16 @@ class Cms extends Cms\Ancestor {
 			case 'form':
 				$descriptor = isset($this->form['descriptor']) ? $this->form['descriptor'] : $this->form;
 
-				$module = new Cms\Module\Form($descriptor, array('id' => $this->getId(), 'data' => $this->getFormData(), 'type' => $this->type), $this->moduleDescriptorExtensions);
+				$type = $this->type;
+
+				$viewMode = false;
+				if ($type == 'edit') {
+					if (!$this->hasPermissionTo('edit', $this->request->tab) && $this->hasPermissionTo('view', $this->request->tab)) {
+						$viewMode = true;
+					}
+				}
+
+				$module = new Cms\Module\Form($descriptor, array('id' => $this->getId(), 'data' => $this->getFormData(), 'type' => $type, 'viewMode' => $viewMode), $this->moduleDescriptorExtensions);
 				break;
 		}
 

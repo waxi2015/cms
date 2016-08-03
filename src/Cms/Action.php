@@ -329,19 +329,23 @@ class Action extends Ancestor {
 	}
 
 	public function addSuccessFeedbackToForm () {
-		$this->cms->moduleDescriptorExtensions['form'][] = [
-			'feedback' => [
-				'true'=>['message'=>\Lang::get('cms.form.save_success_msg'),'valid'=>true]
-			]
-		];
+		if (!isset($this->formDescriptor['feedback'])) {
+			$this->cms->moduleDescriptorExtensions['form'][] = [
+				'feedback' => [
+					'true'=>['message'=>\Lang::get('cms.form.save_success_msg'),'valid'=>true]
+				]
+			];
+		}
 	}
 
 	public function addErrorFeedbackToForm () {
-		$this->cms->moduleDescriptorExtensions['form'][] = [
-			'feedback' => [
-				'false'=>['message'=>\Lang::get('cms.form.save_error_msg'),'valid'=>false]
-			]
-		];
+		if (!isset($this->formDescriptor['feedback'])) {
+			$this->cms->moduleDescriptorExtensions['form'][] = [
+				'feedback' => [
+					'false'=>['message'=>\Lang::get('cms.form.save_error_msg'),'valid'=>false]
+				]
+			];
+		}
 	}
 
 	public function addFiltersToList () {

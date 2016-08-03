@@ -21,7 +21,9 @@ class Form extends Ancestor {
 		if (is_string($descriptor)) {
 			$descriptor = ucfirst($descriptor);
 
-			if (class_exists('\App\Descriptors\Form\\' . $descriptor . '_' . strtolower($this->params['type']))) {
+			if ($this->params['viewMode'] == true && class_exists('\App\Descriptors\Form\\' . $descriptor . '_view')) {
+				$descriptor .= '_view';
+			} elseif (class_exists('\App\Descriptors\Form\\' . $descriptor . '_' . strtolower($this->params['type']))) {
 				$descriptor .= '_' . strtolower($this->params['type']);
 			} elseif (!class_exists('\App\Descriptors\Form\\' . $descriptor)) {
 				if (class_exists('\App\Descriptors\Form\\' . $descriptor . '_add')) {

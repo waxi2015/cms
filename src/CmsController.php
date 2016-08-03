@@ -48,7 +48,6 @@ class CmsController extends Controller
 	{
 		$firstTab = $this->cms->getFirstTab();
 
-
 		if (\Auth::guard('admin')->check()) {
 			return redirect(config('cms.url') . '/' . $firstTab);
 		} else {
