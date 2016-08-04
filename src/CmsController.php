@@ -79,10 +79,10 @@ class CmsController extends Controller
 		if (!$this->cms->hasPermissionTo('reach', $request->tab)) {
 			\App::abort(403, 'Unauthorized action.');
 		}
-
+		
 		switch ($type) {
 			case 'list':
-				return view("$this->viewsPath.list", $this->data);
+				return view("$this->viewsPath." . $this->cms->getListTemplate(), $this->data);
 				break;
 
 			default:

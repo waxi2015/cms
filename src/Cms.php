@@ -65,6 +65,8 @@ class Cms extends Cms\Ancestor {
 
 	public $multilingual = false;
 
+	public $defaultListTemplate = 'list';
+
 	public function __construct ($descriptor, $tab, $request) {
 		if ($this->descriptor === null) {
 
@@ -175,6 +177,16 @@ class Cms extends Cms\Ancestor {
 				$this->descriptor[$module] = array_merge_recursive($this->descriptor[$module], $extension);
 			}
 		}
+	}
+
+	public function getListTemplate () {
+		$template = $this->defaultListTemplate;
+
+		if (isset($this->list['template'])) {
+			$template = $this->list['template'];
+		}
+
+		return $template;
 	}
 
 	public function addModifier ($modifier) {
