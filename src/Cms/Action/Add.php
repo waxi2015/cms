@@ -12,12 +12,13 @@ class Add extends \Waxis\Cms\Cms\Action {
 		if ($this->form !== null) {
 			$this->addSaveButtonToForm();
 			$this->addCancelButtonToForm();
-			$this->addAddNewButtonToForm();
 			$this->addSaveToForm();
 			$this->addIdFieldToForm();
 			$this->addSuccessFeedbackToForm();
 			$this->addErrorFeedbackToForm();
 			$this->addCreatedAtFieldToAddForm();
+			// commented because of view mode
+			//$this->addAddNewButtonToForm();
 		}
 	}
 }
