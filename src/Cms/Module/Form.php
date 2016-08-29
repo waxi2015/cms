@@ -10,12 +10,12 @@ class Form extends Ancestor {
 		$descriptor = $descriptor !== null ? $descriptor : $this->descriptor;
 		$data = null;
 
-		if (isset($this->params['id'])) {
-			$data = $this->params['id'];
-		}
-
 		if (isset($this->params['data'])) {
 			$data = $this->params['data'];
+		}
+
+		if (isset($this->params['id'])) {
+			$data = $this->params['id'];
 		}
 
 		if (is_string($descriptor)) {
