@@ -28,10 +28,10 @@ class Export {
 
 		$output = fopen('php://output', 'w');
 
-		fputcsv($output, $this->getHeaders(), ';', ' ');
+		fputcsv($output, $this->getHeaders(), ',', ' ');
 
 		foreach ($this->getData() as $one) {
-			fputcsv($output, $this->getRowData($one), ';', ' ');
+			fputcsv($output, $this->getRowData($one), ',', ' ');
 		}
 	}
 
@@ -39,7 +39,16 @@ class Export {
 		$rowData = array();
 
 		foreach ($this->getFieldsToShow() as $field) {
-			$rowData[] = trim(iconv('UTF-8', 'ISO-8859-2', $one->{$field}));
+			$data = null;
+
+			if (isset($one->{$field})) {
+				$data = $one->{$field};
+			} else if (isset($one[$field])){
+				$data = $one[$field];
+			}
+
+			$rowData[] = trim($data);
+			//$rowData[] = trim(iconv('UTF-8', 'ISO-8859-2', $data));
 		}
 
 		return $rowData;
@@ -48,8 +57,18 @@ class Export {
 	public function getData () {
 		$data = null;
 
-		$this->list->setFilterValues($this->params);
+		// New filtering based on cookies
+		// Other was not developed
+		$filters = [];
+		$filterId = $this->list->getId() . '-filters';
+		if (isset($_COOKIE[$filterId])) {
+			$filters = json_decode($_COOKIE[$filterId], true);
+		}
+
+		$this->list->setFilterValues($filters);
+		//$this->list->setFilterValues($this->params);
 		$this->list->setLimit(null);
+
 
 		if (isset($this->params['order'])) {
 			$this->list->setOrder($this->params['order']);
