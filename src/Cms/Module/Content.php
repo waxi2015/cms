@@ -8,9 +8,9 @@ class Content {
 		$return = $data;
 
 		foreach (config('locale.languages') as $iso => $lang) {
-			$return[$iso] = nl2br($return[$iso]);
+			$return[$iso] = preg_replace( "/\r|\n/", "", nl2br($return[$iso]));
 		}
-
+		
 		return $return;
 	}
 
