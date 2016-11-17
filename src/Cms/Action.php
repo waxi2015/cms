@@ -130,7 +130,7 @@ class Action extends Ancestor {
 	}
 
 	public function addSaveButtonToForm () {
-		if (!$this->cms->hasPermissionTo('edit', $this->cms->tab)) {
+		if (!$this->cms->hasPermissionTo('edit', $this->cms->tab) && !$this->cms->hasPermissionTo('add', $this->cms->tab)) {
 			return;
 		}
 
