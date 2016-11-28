@@ -27,7 +27,7 @@ class CmsController extends Controller
 		if (!in_array($action, $except)) {
 			\Lang::setLocale(config('cms.locale'));
 
-			$this->middleware('auth:admin', ['except' => ['login', 'index']]);
+			$this->middleware('auth:admin', ['except' => ['login', 'index', 'newpassword']]);
 
 			$tab = $request->tab;
 
