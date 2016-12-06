@@ -60,6 +60,10 @@ class Ancestor {
 		return $this->module;
 	}
 
+	public function getModuleId () {
+		return $this->getModule()->getId();
+	}
+
 	public function render () {
 		echo $this->fetch();
 	}

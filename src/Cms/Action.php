@@ -78,15 +78,19 @@ class Action extends Ancestor {
 	}
 
 	public function addPermissionToList () {
-		$this->cms->moduleDescriptorExtensions['list'][] = [
-			'permission' => 'admin'
-		];
+		if (!isset($this->list->module->getDescriptor()['permission'])) {
+			$this->cms->moduleDescriptorExtensions['list'][] = [
+				'permission' => 'admin'
+			];
+		}
 	}
 
 	public function addPermissionToForm () {
-		$this->cms->moduleDescriptorExtensions['form'][] = [
-			'permission' => 'admin'
-		];
+		if (!isset($this->form->module->getDescriptor()['permission'])) {
+			$this->cms->moduleDescriptorExtensions['form'][] = [
+				'permission' => 'admin'
+			];
+		}
 	}
 
 	public function addTableToList () {

@@ -80,6 +80,8 @@ class CmsController extends Controller
 			\App::abort(403, 'Unauthorized action.');
 		}
 		
+		$this->data['titlePrefix'] = $this->cms->label['tab'] . ' | ';
+		
 		switch ($type) {
 			case 'list':
 				return view("$this->viewsPath." . $this->cms->getListTemplate(), $this->data);
@@ -100,6 +102,8 @@ class CmsController extends Controller
 				$this->cms->addModifier('addViewModeToForm');
 			}
 		}
+		
+		$this->data['titlePrefix'] = $this->cms->label['tab'] . ' | ';
 
 		switch ($this->cms->getEditType()) {
 			case 'edit':
@@ -116,6 +120,8 @@ class CmsController extends Controller
 		if (!$this->cms->hasPermissionTo('add', $request->tab)) {
 			\App::abort(403, 'Unauthorized action.');
 		}
+		
+		$this->data['titlePrefix'] = $this->cms->label['tab'] . ' | ';
 
 		return view("$this->viewsPath.add", $this->data);
 	}

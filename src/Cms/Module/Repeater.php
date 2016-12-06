@@ -39,4 +39,8 @@ class Repeater extends Ancestor {
 
 		$this->module = new \Repeater($descriptor, $page, $params);
 	}
+
+	public function getTotalCount () {
+		return $this->getModule()->getSourceAdapter()->getTotalCount();
+	}
 }
