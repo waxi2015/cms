@@ -88,7 +88,7 @@ class CmsController extends Controller
 				break;
 
 			default:
-				\Log::info($type, $_SERVER);
+				//\Log::info($type, $_SERVER);
 				return $this->{$type}($request);
 				break;
 		}

@@ -335,8 +335,17 @@ class Action extends Ancestor {
 	public function addSuccessFeedbackToForm () {
 		if (!isset($this->formDescriptor['feedback'])) {
 			$this->cms->moduleDescriptorExtensions['form'][] = [
+				'feedback' => []
+			];
+		}
+
+		if (!isset($this->formDescriptor['feedback']['true'])) {
+			$this->cms->moduleDescriptorExtensions['form'][] = [
 				'feedback' => [
-					'true'=>['message'=>\Lang::get('cms.form.save_success_msg'),'valid'=>true]
+					'true' => [
+						'message'=>\Lang::get('cms.form.save_success_msg'),
+						'valid'=>true
+					]
 				]
 			];
 		}
@@ -345,9 +354,18 @@ class Action extends Ancestor {
 	public function addErrorFeedbackToForm () {
 		if (!isset($this->formDescriptor['feedback'])) {
 			$this->cms->moduleDescriptorExtensions['form'][] = [
+				'feedback' => []
+			];
+		}
+
+		if (!isset($this->formDescriptor['feedback']['false'])) {
+			$this->cms->moduleDescriptorExtensions['form'][] = [
 				'feedback' => [
-					'false'=>['message'=>\Lang::get('cms.form.save_error_msg'),'valid'=>false]
-				]
+					'false' => [
+					 	'message'=>\Lang::get('cms.form.save_error_msg'),
+					 	'valid'=>false
+			 		]
+			 	]
 			];
 		}
 	}
