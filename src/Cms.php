@@ -17,6 +17,8 @@ class Cms extends Cms\Ancestor {
 
 	public $descriptor = null;
 
+	public $guard = 'admin';
+
 	public $table = null;
 
 	public $tab = null;
@@ -67,7 +69,7 @@ class Cms extends Cms\Ancestor {
 
 	public $defaultListTemplate = 'list';
 
-	public function __construct ($descriptor, $tab, $request) {
+	public function __construct ($descriptor, $tab, $request, $guard = null) {
 		if ($this->descriptor === null) {
 
 			if (!$descriptor instanceof Cms\Descriptor) {
@@ -116,6 +118,10 @@ class Cms extends Cms\Ancestor {
 			$this->table = $this->descriptor['table'];
 		}
 
+		if ($guard !== null) {
+			$this->guard = $guard;
+		}
+
 		if (isset($this->descriptor['label'])) {
 			$this->label = $this->descriptor['label'];
 		}
@@ -157,7 +163,7 @@ class Cms extends Cms\Ancestor {
 		if ($this->descriptorExtensions === null && $this->moduleDescriptorExtensions === null) {
 			# execute changes made by actions to $this 
 			# eg. extending descriptors
-			$action = new Cms\Action($this);
+			$action = new Cms\Action($this, $this->guard);
 			$action->execute();
 		}
 	}
@@ -190,7 +196,7 @@ class Cms extends Cms\Ancestor {
 	}
 
 	public function addModifier ($modifier) {
-		$action = new Cms\Action($this);
+		$action = new Cms\Action($this, $this->guard);
 		$action->$modifier();
 	}
 
@@ -201,8 +207,8 @@ class Cms extends Cms\Ancestor {
 		}
 
 		$role = null;
-		if (\Auth::guard('admin')->check() && isset(\Auth::guard('admin')->user()->role)) {
-			$role = \Auth::guard('admin')->user()->role;
+		if (\Auth::guard($this->guard)->check() && isset(\Auth::guard($this->guard)->user()->role)) {
+			$role = \Auth::guard($this->guard)->user()->role;
 		}
 
 		if ($roles === null || $role === null) {
@@ -230,7 +236,7 @@ class Cms extends Cms\Ancestor {
 
 	public function getFirstTab ($nth = 0) {
 		$role = 'guest';
-		$admin = \Auth::guard('admin')->user();
+		$admin = \Auth::guard($this->guard)->user();
 
 		if ($admin !== null) {
 			$role = $admin->role;

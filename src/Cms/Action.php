@@ -22,13 +22,19 @@ class Action extends Ancestor {
 
 	public $idElement = null;
 
-	public function __construct (&$cms) {
+	public $guard = 'admin';
+
+	public function __construct (&$cms, $guard = null) {
 		$this->cms = $cms;
 
 		$this->config = $this->getConfig();
 
 		$this->table = $this->cms->table;
 		$this->actions = $this->cms->actions;
+
+		if ($guard !== null) {
+			$this->guard = $guard;
+		}
 
 		$form = $this->cms->getModuleByType('form');
 		if ($form !== null) {
@@ -80,7 +86,7 @@ class Action extends Ancestor {
 	public function addPermissionToList () {
 		if (!isset($this->list->module->getDescriptor()['permission'])) {
 			$this->cms->moduleDescriptorExtensions['list'][] = [
-				'permission' => 'admin'
+				'permission' => $this->guard
 			];
 		}
 	}
@@ -88,7 +94,7 @@ class Action extends Ancestor {
 	public function addPermissionToForm () {
 		if (!isset($this->form->module->getDescriptor()['permission'])) {
 			$this->cms->moduleDescriptorExtensions['form'][] = [
-				'permission' => 'admin'
+				'permission' => $this->guard
 			];
 		}
 	}
@@ -161,9 +167,11 @@ class Action extends Ancestor {
 	}
 
 	public function addSaveToForm () {
-		$this->cms->moduleDescriptorExtensions['form'][] = [
-			'save' => true
-		];
+		if (!array_key_exists('save',$this->form->module->getDescriptor())) {
+			$this->cms->moduleDescriptorExtensions['form'][] = [
+				'save' => true
+			];
+		}
 	}
 
 	public function addIdFieldToForm () {

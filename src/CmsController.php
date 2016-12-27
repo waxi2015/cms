@@ -19,6 +19,8 @@ class CmsController extends Controller
 
 	public $viewsPath = null;
 
+	public $guard = 'admin';
+
 	public function __construct(Request $request, Route $route) {
 		$except = ['getemail'];
 
@@ -27,20 +29,22 @@ class CmsController extends Controller
 		if (!in_array($action, $except)) {
 			\Lang::setLocale(config('cms.locale'));
 
-			$this->middleware('auth:admin', ['except' => ['login', 'index', 'newpassword']]);
+			$this->middleware('auth:' . $this->guard, ['except' => ['login', 'index', 'newpassword']]);
 
 			$tab = $request->tab;
 
 			$request->action = $action;
 
-			$this->cms = new \Cms($this->descriptor, $tab, $request);
+			$this->cms = new \Cms($this->descriptor, $tab, $request, $this->guard);
 
 	    	$this->data = [
 	    		'cms'=> $this->cms,
 	    		'tab' => $tab
 	    	];
 
-			$this->viewsPath = config('cms.views');
+	    	if ($this->viewsPath === null) {
+				$this->viewsPath = config('cms.views');
+	    	}
 		}
 	}
 
@@ -48,7 +52,7 @@ class CmsController extends Controller
 	{
 		$firstTab = $this->cms->getFirstTab();
 
-		if (\Auth::guard('admin')->check()) {
+		if (\Auth::guard($this->guard)->check()) {
 			return redirect(config('cms.url') . '/' . $firstTab);
 		} else {
 			return redirect(config('cms.url') . '/login');
@@ -58,7 +62,7 @@ class CmsController extends Controller
 	public function login () {
 		$firstTab = $this->cms->getFirstTab();
 
-		if (\Auth::guard('admin')->check()) {
+		if (\Auth::guard($this->guard)->check()) {
 			return redirect(config('cms.url') . '/' . $firstTab);
 		} else {
 			$form = new \Form('login');
@@ -68,7 +72,7 @@ class CmsController extends Controller
 	}
 
 	public function logout () {
-		\Auth::guard('admin')->logout();
+		\Auth::guard($this->guard)->logout();
 
 		return redirect(config('cms.url'));
 	}
@@ -157,7 +161,7 @@ class CmsController extends Controller
 	}
 
 	public function getemail (Request $request) {
-		if (!\Auth::guard('admin')->check()) {
+		if (!\Auth::guard($this->guard)->check()) {
 			\App::abort(403, 'Unauthorized action.');
 		}
 
