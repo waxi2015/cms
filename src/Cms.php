@@ -265,7 +265,7 @@ class Cms extends Cms\Ancestor {
 	}
 
 	public function renderExport () {
-		if (!isset($this->list['export'])) {
+		if (!isset($this->list['export']) || !$this->hasPermissionTo('export', $this->tab)) {
 			return null;
 		}
 

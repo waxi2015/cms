@@ -93,7 +93,11 @@ class CmsController extends Controller
 
 			default:
 				//\Log::info($type, $_SERVER);
-				return $this->{$type}($request);
+				if (method_exists($this, $type)) {
+					return $this->{$type}($request);
+				} else {
+					return redirect(config('cms.url'));
+				}
 				break;
 		}
 	}
