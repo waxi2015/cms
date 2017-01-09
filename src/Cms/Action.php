@@ -147,9 +147,12 @@ class Action extends Ancestor {
 		$this->cms->descriptorExtensions['form'][] = [
 			'buttons' => [
 				[
-					'class' => 'btn-primary',
+					'class' => 'btn-primary btn-can-load',
 					'label' => $this->config->getTranslation('save'),
 					'id' 	=> 'save-form',
+					'data' => [
+						'loading-text' => "<span class='fa fa-spinner fa-spin fa-3x fa-fw'></span>"
+					]
 				]
 			]
 		];

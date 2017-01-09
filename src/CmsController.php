@@ -21,6 +21,8 @@ class CmsController extends Controller
 
 	public $guard = 'admin';
 
+	public $titlePrefix = '';
+
 	public function __construct(Request $request, Route $route) {
 		$except = ['getemail'];
 
@@ -84,7 +86,7 @@ class CmsController extends Controller
 			\App::abort(403, 'Unauthorized action.');
 		}
 		
-		$this->data['titlePrefix'] = $this->cms->label['tab'] . ' | ';
+		$this->data['titlePrefix'] = $this->cms->label['tab'] . $this->titlePrefix;
 		
 		switch ($type) {
 			case 'list':
@@ -111,7 +113,7 @@ class CmsController extends Controller
 			}
 		}
 		
-		$this->data['titlePrefix'] = $this->cms->label['tab'] . ' | ';
+		$this->data['titlePrefix'] = $this->cms->label['tab'] . $this->titlePrefix;
 
 		switch ($this->cms->getEditType()) {
 			case 'edit':
@@ -129,7 +131,7 @@ class CmsController extends Controller
 			\App::abort(403, 'Unauthorized action.');
 		}
 		
-		$this->data['titlePrefix'] = $this->cms->label['tab'] . ' | ';
+		$this->data['titlePrefix'] = $this->cms->label['tab'] . $this->titlePrefix;
 
 		return view("$this->viewsPath.add", $this->data);
 	}

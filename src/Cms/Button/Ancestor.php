@@ -22,6 +22,8 @@ class Ancestor extends \Waxis\Cms\Cms\Ancestor {
 
 	public $tab = null;
 
+	public $data = null;
+
 	public function __construct ($descriptor) {
 
 		if (isset($descriptor['label'])) {
@@ -50,6 +52,10 @@ class Ancestor extends \Waxis\Cms\Cms\Ancestor {
 
 		if (isset($descriptor['id'])) {
 			$this->id = $descriptor['id'];
+		}
+
+		if (isset($descriptor['data'])) {
+			$this->data = $descriptor['data'];
 		}
 
 		parent::__construct($descriptor);
@@ -109,6 +115,19 @@ class Ancestor extends \Waxis\Cms\Cms\Ancestor {
 		}
 
 		return ' id="' . $this->id . '"';
+	}
+
+	public function getDataString () {
+		if ($this->data === null) {
+			return null;
+		}
+
+		$return = '';
+		foreach ($this->data as $key => $one) {
+			$return .= ' data-' . $key . '="' . $one . '"';
+		}
+
+		return $return;;
 	}
 
 	public function getType () {
