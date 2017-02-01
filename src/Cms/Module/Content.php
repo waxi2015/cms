@@ -18,7 +18,7 @@ class Content {
 		$return = $data;
 
 		foreach (config('locale.languages') as $iso => $lang) {
-			$return[$iso] = br2nl($return[$iso]);
+			$return[$iso] = stripcslashes(br2nl($return[$iso]));
 		}
 
 		return $return;
@@ -154,7 +154,7 @@ class Content {
 				$content .= 'return [' . PHP_EOL;
 
 				foreach ($tags as $tag) {
-					$content .= "	'".$tag['tag']."' => '".addslashes($tag[$iso])."',". PHP_EOL;
+					$content .= "	'".$tag['tag']."' => '".addslashes(stripcslashes($tag[$iso]))."',". PHP_EOL;
 				}
 
 				$content .= '];';
@@ -206,7 +206,7 @@ class Content {
 
 						if (!isset($tags[$tag])) {
 							$import[$tag]['tag'] = $tag;
-							$import[$tag][$iso] = $expression;
+							$import[$tag][$iso] = stripcslashes($expression);
 							$import[$tag]['created_at'] = date('Y-m-d H:i:s');
 							$import[$tag]['updated_at'] = date('Y-m-d H:i:s');
 						}
